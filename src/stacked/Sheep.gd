@@ -40,6 +40,7 @@ func _on_Minigame_player_won():
 	AudioManager.play_main_music()
 	Globals.open_barn_if_needed()
 	$InteractableCreature.symbol = symbols[10]
+	get_tree().call_group("barn_benches", "invite", "sheep", self, 1.5)
 
 func _on_Minigame_player_lost():
 	AudioManager.play_main_music()

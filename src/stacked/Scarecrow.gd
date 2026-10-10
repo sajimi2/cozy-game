@@ -19,6 +19,9 @@ var has_failed_minigame = false
 var is_in_minigame = false
 
 func _ready():
+	if Globals.barn_guests.has("scarecrow"):
+		queue_free()
+		return
 	if !Globals.has_completed_scarecrow:
 		$InteractableCreature.symbol = symbols[0]
 	else:

@@ -46,6 +46,7 @@ func _on_RPS_player_lost():
 	Globals.has_completed_chicken = true
 	AudioManager.play_main_music()
 	Globals.open_barn_if_needed()
+	get_tree().call_group("barn_benches", "invite", "chicken", self, 1.5)
 
 func _on_InteractableCreature_exited():
 	if $InteractableCreature.symbol == symbols[1]:

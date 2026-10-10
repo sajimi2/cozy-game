@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" path="res://src/stacked/Stump.tscn" id="19"]
 [ext_resource type="PackedScene" path="res://src/stacked/Rock.tscn" id="20"]
 [ext_resource type="PackedScene" path="res://src/stacked/Log.tscn" id="21"]
+[ext_resource type="PackedScene" path="res://src/stacked/BarnBenches.tscn" id="barn_benches"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(209, 20)
@@ -99,6 +100,8 @@ points = PackedVector2Array(172, -17, 180, 17, 204, 27, 217, 48, 238, 50, 250, 6
 
 [node name="Barn" parent="Node2D" unique_id=428469267 instance=ExtResource("4")]
 position = Vector2(169, 108)
+
+[node name="BarnBenches" parent="Node2D" instance=ExtResource("barn_benches")]
 
 [node name="HayStack" parent="Node2D" unique_id=800165925 instance=ExtResource("5")]
 position = Vector2(201, 105)
@@ -228,9 +231,6 @@ position = Vector2(-51, 50)
 [node name="Tree35" parent="Node2D" unique_id=1735098579 instance=ExtResource("7")]
 position = Vector2(-17, 9)
 
-[node name="Tree36" parent="Node2D" unique_id=166366585 instance=ExtResource("7")]
-position = Vector2(181, 145)
-
 [node name="Wheat" parent="Node2D" unique_id=721363216 instance=ExtResource("16")]
 position = Vector2(27, 265)
 
@@ -245,9 +245,6 @@ position = Vector2(167, 273)
 
 [node name="Wheat5" parent="Node2D" unique_id=753478440 instance=ExtResource("16")]
 position = Vector2(232, 194)
-
-[node name="Wheat6" parent="Node2D" unique_id=1112675890 instance=ExtResource("16")]
-position = Vector2(200, 129)
 
 [node name="Wheat7" parent="Node2D" unique_id=123511246 instance=ExtResource("16")]
 position = Vector2(237, 88)
@@ -342,9 +339,6 @@ position = Vector2(195, 226)
 [node name="Wheat21" parent="Node2D" unique_id=548952015 instance=ExtResource("16")]
 position = Vector2(53, 71)
 
-[node name="Wheat14" parent="Node2D" unique_id=846902474 instance=ExtResource("16")]
-position = Vector2(132, 115)
-
 [node name="Wheat15" parent="Node2D" unique_id=249728940 instance=ExtResource("16")]
 position = Vector2(63, 174)
 
@@ -380,9 +374,6 @@ position = Vector2(-29, 211)
 
 [node name="Mushroom8" parent="Node2D" unique_id=1850717911 instance=ExtResource("17")]
 position = Vector2(144, 276)
-
-[node name="Mushroom9" parent="Node2D" unique_id=1911158319 instance=ExtResource("17")]
-position = Vector2(156, 141)
 
 [node name="Mushroom10" parent="Node2D" unique_id=1518294633 instance=ExtResource("17")]
 position = Vector2(7, 42)

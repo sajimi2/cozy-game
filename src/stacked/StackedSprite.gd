@@ -6,6 +6,8 @@ extends Sprite2D
 @export var stack_offset: int = 1: set = set_stack_offset
 @export var shadow_radius: int = 8: set = set_shadow_radius
 @export var shadow_color: Color = Color("#454259"): set = set_shadow_color
+# 整体抬高各层（跳跃、坐在凳子上），影子留在地面。
+@export var lift: int = 0: set = set_lift
 
 var rotation_amount = 0.0
 
@@ -21,6 +23,12 @@ func set_shadow_color(_shadow_color):
 func set_shadow_radius(_shadow_radius):
 	shadow_radius = _shadow_radius
 	queue_redraw()
+
+func set_lift(_lift):
+	lift = _lift
+	for sprite in get_children():
+		if sprite is Sprite2D and !"Shadow" in sprite.name:
+			sprite.position.y = -sprite.frame * stack_offset - lift
 
 func set_stack_offset(_stack_offset):
 	stack_offset = _stack_offset
@@ -57,7 +65,7 @@ func render_sprites():
 		next_sprite.texture = texture
 		next_sprite.hframes = hframes
 		next_sprite.frame = i
-		next_sprite.position.y = -i * stack_offset
+		next_sprite.position.y = -i * stack_offset - lift
 	if !Engine.is_editor_hint():
 		texture = null
 

@@ -8,6 +8,9 @@ var player_ref = null
 var is_in_minigame = false
 
 func _ready():
+	if Globals.barn_guests.has("frog"):
+		queue_free()
+		return
 	if !Globals.has_completed_frog:
 		$InteractableCreature.symbol = symbols[0]
 	else:
