@@ -1,6 +1,7 @@
 extends Node2D
 
 const RockPaperScissors = preload("res://src/minigames/RockPaperScissors.tscn")
+const HintText = preload("res://src/ui/HintText.gd")
 
 @export var symbols = [] # (Array, Texture2D)
 
@@ -20,6 +21,7 @@ func _on_InteractableCreature_interacted(body):
 		$InteractableCreature/Interactable/Bubble/Symbol.frame = randi() % 4
 	can_interact = false
 	await get_tree().create_timer(0.25).timeout
+	TextBox.show_hint(HintText.RPS_CONTROLS, self, true)
 	var minigame = RockPaperScissors.instantiate()
 	add_child(minigame)
 	var enemy_choice = min($InteractableCreature/Interactable/Bubble/Symbol.frame, 2)
@@ -32,6 +34,7 @@ func _on_RPS_player_canceled():
 	AudioManager.play_main_music()
 	can_interact = true
 	$InteractableCreature.symbol = symbols[0]
+	finish_minigame_hint()
 
 func _on_RPS_player_won():
 	AudioManager.play_main_music()
@@ -39,6 +42,8 @@ func _on_RPS_player_won():
 	$InteractableCreature.symbol = symbols[1]
 	AudioManager.play_sfx("FailedMinigame")
 	AudioManager.play_sfx("SadFaceAppears")
+	Globals.note_failure("chicken")
+	finish_minigame_hint()
 
 func _on_RPS_player_lost():
 	can_interact = true
@@ -46,7 +51,19 @@ func _on_RPS_player_lost():
 	Globals.has_completed_chicken = true
 	AudioManager.play_main_music()
 	Globals.open_barn_if_needed()
+	finish_minigame_hint()
 
 func _on_InteractableCreature_exited():
 	if $InteractableCreature.symbol == symbols[1]:
 		$InteractableCreature.symbol = symbols[0]
+
+func finish_minigame_hint():
+	TextBox.hide_hint(self)
+	$InteractableCreature.refresh_hint()
+
+func get_hint():
+	if Globals.has_completed_chicken:
+		return HintText.CHICKEN_DONE
+	if Globals.has_failed("chicken"):
+		return HintText.CHICKEN_RETRY
+	return HintText.CHICKEN

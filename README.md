@@ -20,4 +20,18 @@ Game made for Cozy Autumn Jam :]
 
 迁移前完整备份、素材校验和检查证据位于 `D:\vibe coding\CozyAutumn_Migration_20261010\`，其中 `before_migration.zip` 保存本轮修改前的工程现状（当时已存在未完成的自动转换）。
 
+## 中文引导（2026-10-10）
+
+原版几乎没有文字，很多胜利条件只能从源码里看出来。现在加入了不打断操作的中文提示条：
+
+- 靠近角色、木牌、蛋或上锁的谷仓门时，底部显示提示；离开后自动收起。
+- 小游戏开始后，顶部显示操作说明（猜拳、猜数字常驻；无人机、稻草人 6 秒后收起）。
+- 失败一次后，提示会换成更直白的说法，例如小鸡猜拳会提示“也许输给它”。
+- 中央广场的告示牌按 Z 后列出还没帮助的朋友和方位。
+- 第一次进入起始区、中央广场、东边迷宫时各有一条区域说明。
+
+所有文案集中在 `src/ui/HintText.gd`，改措辞只需改这一个文件；提示条逻辑在 `src/ui/TextBox.gd`。角色脚本只要实现 `get_hint()`，靠近时就会自动显示提示。另外改了一处玩法细节：猜数字失败后再按 Z，小羊只会换一个新数字并展示出来，再按一次才开始，避免新数字一闪而过。
+
+中文使用 [Fusion Pixel 12px](https://github.com/TakWolf/fusion-pixel-font) 简体中文版（SIL OFL 1.1），许可证见 `fonts/FusionPixel-licenses/`。
+
 迁移参照：[Godot 官方升级说明](https://docs.godotengine.org/en/stable/tutorials/migrating/upgrading_to_godot_4.html)。

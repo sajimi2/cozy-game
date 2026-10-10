@@ -4,6 +4,10 @@
 
 ## 唯一当前目标
 
+进行中：加入中文引导，分支 claude/modest-volta-9vfdz8。文案在 src/ui/HintText.gd，提示条在 src/ui/TextBox.gd；已用 Godot 4.7.2 + Xvfb 跑通各角色提示、小游戏操作提示、失败后提示、告示牌进度与谷仓门提示，并检查了截图排版。待用户试玩确认措辞与提示时机。
+
+以下为上一轮记录：
+
 已完成：将当前 Godot 4.7.2 适配工程上传到用户创建的 https://github.com/sajimi2/cozy-game 仓库，默认分支 main。保留当前玩法与美术，不执行内容扩展。
 
 ## 已完成及证据

@@ -2,6 +2,7 @@ extends Node2D
 
 const Spirit = preload("res://src/stacked/Spirit.tscn")
 const TinySpirit = preload("res://src/stacked/TinySpirit.tscn")
+const HintText = preload("res://src/ui/HintText.gd")
 
 @export var symbols = [] # (Array, Texture2D)
 
@@ -51,6 +52,7 @@ func _on_InteractableCreature_interacted(body):
 	$Bubble.hide()
 	player_ref.can_move = true
 	get_tree().call_group("north_area", "start_timer")
+	TextBox.show_hint(HintText.SCARECROW_CONTROLS, self, true, 6.0)
 	randomize()
 	attack_order.shuffle()
 	current_attack_type = attack_order[attack_index]
@@ -75,6 +77,7 @@ func won_minigame():
 	$InteractableCreature.arc_collision_radius = 24
 	player_ref = null
 	$InteractableCreature.slow_turn_towards(global_position + Vector2(0, 8))
+	finish_minigame_hint()
 	await get_tree().create_timer(0.1).timeout
 	set_battle_symbol(symbols[4])
 
@@ -92,6 +95,8 @@ func failed_minigame():
 	AudioManager.play_sfx("FailedMinigame")
 	AudioManager.play_sfx("SadFaceAppears")
 	$InteractableCreature.slow_turn_towards(global_position + Vector2(0, -8))
+	Globals.note_failure("scarecrow")
+	finish_minigame_hint()
 
 func handle_post_attack():
 	await get_tree().create_timer(2.0).timeout
@@ -165,3 +170,14 @@ func _on_InteractableCreature_entered():
 		$InteractableCreature.symbol = symbols[0]
 	else:
 		$InteractableCreature.symbol = symbols[4]
+
+func finish_minigame_hint():
+	TextBox.hide_hint(self)
+	$InteractableCreature.refresh_hint()
+
+func get_hint():
+	if Globals.has_completed_scarecrow:
+		return HintText.SCARECROW_DONE
+	if Globals.has_failed("scarecrow"):
+		return HintText.SCARECROW_RETRY
+	return HintText.SCARECROW

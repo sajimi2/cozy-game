@@ -115,6 +115,20 @@ func _on_Interactable_interacted(body):
 func _on_Interactable_entered():
 	AudioManager.play_sfx("InteractionBubbleAppeared")
 	emit_signal("entered")
+	refresh_hint()
 
 func _on_Interactable_exited():
 	emit_signal("exited")
+	TextBox.hide_hint(self)
+
+func is_player_nearby():
+	return $Interactable.body_ref != null
+
+# 父节点实现 get_hint() 即可在玩家靠近时显示中文引导；状态变化后再调用一次刷新。
+func refresh_hint():
+	if Engine.is_editor_hint() or !get_parent().has_method("get_hint"):
+		return
+	if is_player_nearby() and visible:
+		TextBox.show_hint(get_parent().get_hint(), self)
+	else:
+		TextBox.hide_hint(self)

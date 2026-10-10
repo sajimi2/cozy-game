@@ -1,5 +1,7 @@
 extends Node2D
 
+const HintText = preload("res://src/ui/HintText.gd")
+
 @export var symbols = [] # (Array, Texture2D)
 
 func _ready():
@@ -20,7 +22,15 @@ func _on_InteractableCreature_interacted(body):
 	else:
 		AudioManager.play_sfx("QuestionMarkAppears")
 		$InteractableCreature.symbol = symbols[2]
+	$InteractableCreature.refresh_hint()
 
 func _on_InteractableCreature_exited():
 	if $InteractableCreature.symbol == symbols[2]:
 		$InteractableCreature.symbol = symbols[0]
+
+func get_hint():
+	if Globals.has_completed_dodo:
+		return HintText.DODO_DONE
+	if Globals.has_found_egg:
+		return HintText.DODO_HAS_EGG
+	return HintText.DODO
