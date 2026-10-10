@@ -1,7 +1,5 @@
 extends Node2D
 
-const HintText = preload("res://src/ui/HintText.gd")
-
 func _on_ToStartingArea_body_entered(body):
 	if "Player" in body.name:
 		Globals.last_scene_name = "MainArea"
@@ -22,8 +20,6 @@ func _ready():
 	elif Globals.last_scene_name == "NorthArea":
 		$Node2D/Player.position = Vector2(Globals.last_player_position.x, 19)
 		$Node2D/Player.rotate_all_sprites(deg_to_rad(180.0))
-	if Globals.should_show_area_hint("MainArea"):
-		TextBox.show_hint(HintText.MAIN_AREA, self, false, 7.0)
 
 func _on_ToWestArea_body_entered(body):
 	if "Player" in body.name:

@@ -2,7 +2,6 @@ extends Node2D
 
 const CornStalk = preload("res://src/stacked/CornStalk.tscn")
 const Smoke = preload("res://src/minigames/drone/Smoke.tscn")
-const HintText = preload("res://src/ui/HintText.gd")
 
 func _on_ToMainArea_body_entered(body):
 	if "Player" in body.name:
@@ -34,8 +33,6 @@ func _ready():
 	if Globals.last_scene_name == "MainArea":
 		$Node2D/Player.position = Vector2(12.0, Globals.last_player_position.y - 72)
 		$Node2D/Player.rotate_all_sprites(deg_to_rad(90.0))
-	if Globals.should_show_area_hint("EastArea"):
-		TextBox.show_hint(HintText.EAST_MAZE, self, false, 7.0)
 
 func _on_ChangeCameraLeft_body_entered(body):
 	if "Player" in body.name:

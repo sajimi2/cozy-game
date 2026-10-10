@@ -23,10 +23,6 @@ var has_completed_dodo = false
 
 var has_found_egg = false
 
-# 引导提示用：记录每个小游戏失败过的次数，以及已经弹出过的区域提示。
-var failed_counts = {}
-var shown_area_hints = {}
-
 var wind = Vector2.ZERO
 
 enum BusType {
@@ -50,35 +46,6 @@ func get_progress_level():
 	if has_completed_dodo:
 		progress += 1
 	return progress
-
-func has_completed(friend):
-	match friend:
-		"chicken":
-			return has_completed_chicken
-		"frog":
-			return has_completed_frog
-		"scarecrow":
-			return has_completed_scarecrow
-		"sheep":
-			return has_completed_sheep
-		"ostrich":
-			return has_completed_ostrich
-		"dodo":
-			return has_completed_dodo
-	return false
-
-func note_failure(minigame):
-	failed_counts[minigame] = failed_counts.get(minigame, 0) + 1
-
-func has_failed(minigame):
-	return failed_counts.get(minigame, 0) > 0
-
-# 每个区域的介绍提示只在第一次进入时弹出。
-func should_show_area_hint(area_name):
-	if shown_area_hints.has(area_name):
-		return false
-	shown_area_hints[area_name] = true
-	return true
 
 func open_barn_if_needed():
 	if get_progress_level() == 6:
