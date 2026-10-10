@@ -75,6 +75,7 @@ position = Vector2(0, 72)
 texture = ExtResource("13")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=890003612]
+y_sort_enabled = true
 
 [node name="Player" parent="Node2D" unique_id=17343760 instance=ExtResource("1")]
 position = Vector2(169, 75)

@@ -214,6 +214,7 @@ centered = false
 [node name="Lightnings" type="Node2D" parent="." unique_id=1890118707]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1895915464]
+y_sort_enabled = true
 
 [node name="Player" parent="Node2D" unique_id=1493314385 instance=ExtResource("2")]
 position = Vector2(98, 263)

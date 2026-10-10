@@ -74,6 +74,7 @@ position = Vector2(93, 0)
 shape = SubResource("3")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1155965393]
+y_sort_enabled = true
 
 [node name="Player" parent="Node2D" unique_id=1584570901 instance=ExtResource("1")]
 position = Vector2(21, 127)

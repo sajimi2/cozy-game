@@ -61,6 +61,7 @@ shadow_radius = 0
 position = Vector2(116, 45)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1260506982]
+y_sort_enabled = true
 
 [node name="HayStack" parent="Node2D" unique_id=1370664471 instance=ExtResource("1")]
 position = Vector2(27, 113)
