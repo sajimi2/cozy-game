@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Sign.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/InteractableSign.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/ButtonPress.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Heart.png" id="5"]
+
+[node name="InteractableSign" type="Node2D" unique_id=1377880112]
+script = ExtResource("3")
+symbols = [ExtResource("4"), ExtResource("5")]
+
+[node name="InteractableCreature" parent="." unique_id=1537126328 instance=ExtResource("1")]
+starting_rotation = -10
+turn_towards_player = false
+texture = ExtResource("2")
+shadow_radius = 4
+arc_radius = 8
+arc_collision_radius = 26
+collision_radius = 4
+bubble_offset = Vector2(0, -22)
+
+[connection signal="entered" from="InteractableCreature" to="." method="_on_InteractableCreature_entered"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

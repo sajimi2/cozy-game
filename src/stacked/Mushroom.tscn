@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/Mushroom.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Mushroom.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Mushroom_2.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Mushroom_1.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Mushroom_3.png" id="6"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 3.16228
+
+[node name="Mushroom" type="StaticBody2D" unique_id=1807217360]
+script = ExtResource("2")
+textures = [ExtResource("5"), ExtResource("4"), ExtResource("6")]
+
+[node name="StackedSprite" parent="." unique_id=290588307 instance=ExtResource("1")]
+texture = ExtResource("3")
+hframes = 9
+shadow_radius = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1844851521]
+shape = SubResource("1")

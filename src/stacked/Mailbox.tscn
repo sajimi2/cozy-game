@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Mailbox.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Mailbox.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 5.0
+
+[node name="Mailbox" type="Node2D" unique_id=1191796350]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=2099871240 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 18
+shadow_radius = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1137847720]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1721305765]
+shape = SubResource("1")

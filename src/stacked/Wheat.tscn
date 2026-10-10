@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Wheat_3.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Wheat.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Wheat_4.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Wheat_5.png" id="5"]
+
+[node name="Wheat" type="Node2D" unique_id=1695222363]
+script = ExtResource("3")
+wheats = [ExtResource("2"), ExtResource("4"), ExtResource("5")]
+
+[node name="StackedSprite" parent="." unique_id=666833586 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 9
+shadow_radius = 5
+shadow_color = Color(0.054902, 0.0901961, 0.290196, 0.121569)

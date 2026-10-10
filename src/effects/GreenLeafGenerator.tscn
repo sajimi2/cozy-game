@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/effects/LeafGenerator.gd" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/effects/Leaf_Green_1.png" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/effects/Leaf_Green_3.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/effects/Leaf_Green_2.png" id="4"]
+
+[node name="GreenLeafGenerator" type="Node2D" unique_id=448119152]
+script = ExtResource("1")
+leaf_textures = [ExtResource("2"), ExtResource("4"), ExtResource("3")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1339802999]
+wait_time = 0.25
+autostart = true
+
+[node name="Leaves" type="Node2D" parent="." unique_id=1324555517]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

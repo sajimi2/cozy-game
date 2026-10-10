@@ -1,0 +1,67 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Egg.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Egg.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Egg.png" id="4"]
+[ext_resource type="PackedScene" path="res://src/stacked/DormantEgg.tscn" id="5"]
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DormantEgg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="1"]
+resource_name = "shrink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DormantEgg:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya2lm"]
+_data = {
+&"RESET": SubResource("2"),
+&"shrink": SubResource("1")
+}
+
+[node name="Egg" type="Node2D" unique_id=2009739162]
+script = ExtResource("3")
+symbols = [ExtResource("4")]
+
+[node name="InteractableCreature" parent="." unique_id=1297439535 instance=ExtResource("1")]
+starting_rotation = 30
+turn_towards_player = false
+hframes = 8
+texture = ExtResource("2")
+shadow_radius = 4
+arc_radius = 8
+arc_collision_radius = 20
+bubble_offset = Vector2(0, -19)
+
+[node name="DormantEgg" parent="." unique_id=1789961152 instance=ExtResource("5")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=109552089]
+libraries/ = SubResource("AnimationLibrary_ya2lm")
+
+[connection signal="entered" from="InteractableCreature" to="." method="_on_InteractableCreature_entered"]
+[connection signal="exited" from="InteractableCreature" to="." method="_on_InteractableCreature_exited"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

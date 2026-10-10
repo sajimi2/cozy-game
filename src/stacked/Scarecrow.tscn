@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Scarecrow.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Scarecrow.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Sleep.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Anger.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/ui/ChatBubble.png" id="6"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/ButtonPress.png" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Spirits.png" id="8"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/SadFace.png" id="9"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Heart.png" id="10"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Spread.png" id="11"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Lightning.png" id="12"]
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("6")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("6")
+region = Rect2(36, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("6")
+region = Rect2(54, 0, 18, 16)
+
+[sub_resource type="SpriteFrames" id="9"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Scarecrow" type="Node2D" unique_id=852538961 groups=["scarecrow"]]
+script = ExtResource("3")
+symbols = [ExtResource("4"), ExtResource("5"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12")]
+
+[node name="InteractableCreature" parent="." unique_id=614718054 instance=ExtResource("1")]
+turn_towards_player = false
+hframes = 22
+texture = ExtResource("2")
+arc_collision_radius = 24
+bubble_offset = Vector2(0, -32)
+
+[node name="Bubble" type="AnimatedSprite2D" parent="." unique_id=488177644]
+visible = false
+z_index = 1
+position = Vector2(0, -33)
+sprite_frames = SubResource("9")
+
+[node name="Symbol" type="Sprite2D" parent="Bubble" unique_id=1394558256]
+texture = ExtResource("7")
+hframes = 4
+frame = 1
+
+[connection signal="entered" from="InteractableCreature" to="." method="_on_InteractableCreature_entered"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]
+[connection signal="frame_changed" from="Bubble" to="." method="_on_Bubble_frame_changed"]

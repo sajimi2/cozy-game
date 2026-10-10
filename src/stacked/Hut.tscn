@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/Hut.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Hut.gd" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(46, 37)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(13, 15)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(14, 15)
+
+[node name="Barn" type="Node2D" unique_id=1293904571]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=1645662554 instance=ExtResource("1")]
+position = Vector2(0, -18)
+texture = ExtResource("2")
+hframes = 17
+stack_offset = 2
+shadow_radius = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1242949047]
+position = Vector2(0, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1680091654]
+position = Vector2(0, -6.5)
+shape = SubResource("1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=2094699524]
+position = Vector2(-16.5, 19.5)
+shape = SubResource("2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1008300923]
+position = Vector2(16, 19.5)
+shape = SubResource("3")

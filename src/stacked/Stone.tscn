@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Stone.png" id="2"]
+
+[node name="Stone" type="Node2D" unique_id=1339363870]
+
+[node name="StackedSprite" parent="." unique_id=792111872 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 10
+shadow_radius = 24

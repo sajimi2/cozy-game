@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/player/Blob.gd" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/player/Body.png" id="2"]
+[ext_resource type="Material" path="res://src/shaders/Squash.tres" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/player/WhiteBase.png" id="4"]
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/player/JackSmaller.png" id="6"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 7.0
+
+[node name="Blob" type="CharacterBody2D" unique_id=1268732133]
+motion_mode = 1
+script = ExtResource("1")
+y_offset = 3.0
+squash_shader = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759202121]
+shape = SubResource("1")
+
+[node name="LeftLeg" type="Line2D" parent="." unique_id=513066417]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.619608, 0.388235, 0.2, 1)
+
+[node name="RightLeg" type="Line2D" parent="." unique_id=1605768678]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.619608, 0.388235, 0.2, 1)
+joint_mode = 2
+
+[node name="Body" type="Sprite2D" parent="." unique_id=606731435]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2")
+hframes = 2
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=698621525]
+visible = false
+self_modulate = Color(0.0235294, 0.0705882, 0.14902, 0.160784)
+position = Vector2(0, -4)
+texture = ExtResource("4")
+offset = Vector2(0, 4)
+
+[node name="StackedSprite" parent="." unique_id=1938677586 instance=ExtResource("5")]
+position = Vector2(-1, 0)
+texture = ExtResource("6")
+hframes = 10

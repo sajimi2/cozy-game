@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/BarnScarecrow.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Scarecrow.png" id="7"]
+
+[node name="BarnScarecrow" type="Node2D" unique_id=647855973 groups=["scarecrow"]]
+script = ExtResource("2")
+
+[node name="InteractableCreature" parent="." unique_id=524739549 instance=ExtResource("1")]
+hframes = 22
+texture = ExtResource("7")
+shadow_radius = 0
+arc_collision_radius = 32
+bubble_offset = Vector2(0, -24)
+
+[connection signal="entered" from="InteractableCreature" to="." method="_on_InteractableCreature_entered"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

@@ -1,0 +1,916 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/player/Player.tscn" id="1"]
+[ext_resource type="Script" path="res://src/areas/WestArea.gd" id="2"]
+[ext_resource type="PackedScene" path="res://src/stacked/Frog.tscn" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/areas/Lake.png" id="4"]
+[ext_resource type="PackedScene" path="res://src/minigames/drone/Drone.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://src/effects/Fence.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://src/stacked/LakeTree.tscn" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/DirtSpot.png" id="8"]
+[ext_resource type="PackedScene" path="res://src/stacked/Dodo.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://src/effects/GreenLeafGenerator.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://src/effects/WindGenerator.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://src/stacked/EvergreenTree.tscn" id="12"]
+[ext_resource type="Texture2D" path="res://sprites/areas/LeftPath.png" id="13"]
+[ext_resource type="PackedScene" path="res://src/stacked/Barrel.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://src/stacked/Log.tscn" id="15"]
+[ext_resource type="PackedScene" path="res://src/stacked/Rock.tscn" id="16"]
+[ext_resource type="PackedScene" path="res://src/stacked/Wheat.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://src/stacked/Mushroom.tscn" id="18"]
+[ext_resource type="PackedScene" path="res://src/stacked/Stump.tscn" id="19"]
+
+[sub_resource type="CircleShape2D" id="4"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 162)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(2.5, 162)
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 26.0192
+
+[sub_resource type="CircleShape2D" id="5"]
+
+[node name="WestArea" type="Node2D" unique_id=716966602 groups=["west_area"]]
+script = ExtResource("2")
+
+[node name="Background" type="ColorRect" parent="." unique_id=793185042]
+show_behind_parent = true
+offset_left = -192.0
+offset_right = 192.0
+offset_bottom = 144.0
+color = Color(0.741176, 0.576471, 0.32549, 1)
+
+[node name="Lake" type="Sprite2D" parent="." unique_id=454787115]
+visible = false
+position = Vector2(-96, 72)
+texture = ExtResource("4")
+
+[node name="Dirt" type="Polygon2D" parent="." unique_id=90226484]
+visible = false
+color = Color(0.478431, 0.333333, 0.313726, 1)
+polygon = PackedVector2Array(-40, -20, 0, -9, 0, 17, -9, 19, -32, 16, -45, 24, -53, 38, -44, 61, -56, 78, -57, 100, -45, 118, -32, 129, -15, 134, -5, 136, 0, 135, 0, 154, -12, 154, -33, 156, -95, 165, -140, 166, -204, 155, -219, 122, -218, 75, -212, 15, -196, -14, -139, -20, -82, -26, -48, -27)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=550358587]
+position = Vector2(102, 70)
+limit_left = -192
+limit_top = 0
+limit_right = 192
+limit_bottom = 144
+position_smoothing_enabled = true
+
+[node name="LandingArea" type="Area2D" parent="." unique_id=1212145740]
+position = Vector2(-24, 102)
+
+[node name="Sprite2D" type="Sprite2D" parent="LandingArea" unique_id=162819564]
+texture = ExtResource("8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingArea" unique_id=1867654132]
+shape = SubResource("4")
+
+[node name="Path3D" type="Sprite2D" parent="." unique_id=1146279402]
+position = Vector2(0, 72)
+texture = ExtResource("13")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=890003612]
+
+[node name="Player" parent="Node2D" unique_id=17343760 instance=ExtResource("1")]
+position = Vector2(169, 75)
+
+[node name="Drone" parent="Node2D" unique_id=1158214317 instance=ExtResource("5")]
+position = Vector2(-169, 27)
+
+[node name="Frog" parent="Node2D" unique_id=1359341540 instance=ExtResource("3")]
+position = Vector2(-26, 32)
+
+[node name="LakeTree" parent="Node2D" unique_id=719087720 instance=ExtResource("7")]
+position = Vector2(-113, -21)
+
+[node name="LakeTree13" parent="Node2D" unique_id=386507469 instance=ExtResource("7")]
+position = Vector2(-124, -21)
+
+[node name="LakeTree15" parent="Node2D" unique_id=2034424270 instance=ExtResource("7")]
+position = Vector2(-155, -17)
+
+[node name="LakeTree72" parent="Node2D" unique_id=630646833 instance=ExtResource("7")]
+position = Vector2(-145, -13)
+
+[node name="LakeTree73" parent="Node2D" unique_id=929066072 instance=ExtResource("7")]
+position = Vector2(-134, -10)
+
+[node name="LakeTree74" parent="Node2D" unique_id=36615338 instance=ExtResource("7")]
+position = Vector2(-134, -1)
+
+[node name="LakeTree75" parent="Node2D" unique_id=1378165469 instance=ExtResource("7")]
+position = Vector2(-145, 0)
+
+[node name="LakeTree76" parent="Node2D" unique_id=232762809 instance=ExtResource("7")]
+position = Vector2(-117, -10)
+
+[node name="LakeTree60" parent="Node2D" unique_id=631776072 instance=ExtResource("7")]
+position = Vector2(-166, -17)
+
+[node name="LakeTree61" parent="Node2D" unique_id=381961399 instance=ExtResource("7")]
+position = Vector2(-177, -20)
+
+[node name="LakeTree62" parent="Node2D" unique_id=1045774609 instance=ExtResource("7")]
+position = Vector2(-188, -9)
+
+[node name="LakeTree63" parent="Node2D" unique_id=945416703 instance=ExtResource("7")]
+position = Vector2(-198, 6)
+
+[node name="LakeTree66" parent="Node2D" unique_id=717695895 instance=ExtResource("7")]
+position = Vector2(-189, 32)
+
+[node name="LakeTree67" parent="Node2D" unique_id=1639810798 instance=ExtResource("7")]
+position = Vector2(-196, 51)
+
+[node name="LakeTree70" parent="Node2D" unique_id=385743721 instance=ExtResource("7")]
+position = Vector2(-197, 76)
+
+[node name="LakeTree2" parent="Node2D" unique_id=547951779 instance=ExtResource("7")]
+position = Vector2(-103, -16)
+
+[node name="LakeTree3" parent="Node2D" unique_id=385212727 instance=ExtResource("7")]
+position = Vector2(-94, -10)
+
+[node name="LakeTree4" parent="Node2D" unique_id=379744411 instance=ExtResource("7")]
+position = Vector2(-84, -7)
+
+[node name="LakeTree7" parent="Node2D" unique_id=2066731783 instance=ExtResource("7")]
+position = Vector2(-64, -12)
+
+[node name="LakeTree9" parent="Node2D" unique_id=1091820562 instance=ExtResource("7")]
+position = Vector2(-46, -6)
+
+[node name="LakeTree11" parent="Node2D" unique_id=62935208 instance=ExtResource("7")]
+position = Vector2(-30, -12)
+
+[node name="LakeTree12" parent="Node2D" unique_id=1280983071 instance=ExtResource("7")]
+position = Vector2(-15, -14)
+
+[node name="LakeTree16" parent="Node2D" unique_id=241668230 instance=ExtResource("7")]
+position = Vector2(-57, 129)
+
+[node name="LakeTree17" parent="Node2D" unique_id=1302628462 instance=ExtResource("7")]
+position = Vector2(-63, 119)
+
+[node name="LakeTree78" parent="Node2D" unique_id=341023017 instance=ExtResource("7")]
+position = Vector2(-46, 136)
+
+[node name="LakeTree79" parent="Node2D" unique_id=442289092 instance=ExtResource("7")]
+position = Vector2(-32, 141)
+
+[node name="LakeTree80" parent="Node2D" unique_id=2018555092 instance=ExtResource("7")]
+position = Vector2(-19, 137)
+
+[node name="LakeTree81" parent="Node2D" unique_id=1705400872 instance=ExtResource("7")]
+position = Vector2(-4, 146)
+
+[node name="LakeTree18" parent="Node2D" unique_id=168908583 instance=ExtResource("7")]
+position = Vector2(-77, 127)
+
+[node name="LakeTree19" parent="Node2D" unique_id=1265973640 instance=ExtResource("7")]
+position = Vector2(-107, 129)
+
+[node name="LakeTree20" parent="Node2D" unique_id=1662156251 instance=ExtResource("7")]
+position = Vector2(-128, 133)
+
+[node name="LakeTree21" parent="Node2D" unique_id=656302610 instance=ExtResource("7")]
+position = Vector2(-144, 130)
+
+[node name="LakeTree23" parent="Node2D" unique_id=493617067 instance=ExtResource("7")]
+position = Vector2(-153, 137)
+
+[node name="LakeTree24" parent="Node2D" unique_id=2015772169 instance=ExtResource("7")]
+position = Vector2(-165, 132)
+
+[node name="LakeTree25" parent="Node2D" unique_id=1463008269 instance=ExtResource("7")]
+position = Vector2(-188, 117)
+
+[node name="LakeTree27" parent="Node2D" unique_id=1255448835 instance=ExtResource("7")]
+position = Vector2(-178, 129)
+
+[node name="LakeTree28" parent="Node2D" unique_id=1893799458 instance=ExtResource("7")]
+position = Vector2(-117, 118)
+
+[node name="LakeTree30" parent="Node2D" unique_id=1620407779 instance=ExtResource("7")]
+position = Vector2(-195, 95)
+
+[node name="LakeTree29" parent="Node2D" unique_id=1968945964 instance=ExtResource("7")]
+position = Vector2(-100, 118)
+
+[node name="LakeTree31" parent="Node2D" unique_id=781504085 instance=ExtResource("7")]
+position = Vector2(-107, 93)
+
+[node name="LakeTree32" parent="Node2D" unique_id=934876330 instance=ExtResource("7")]
+position = Vector2(-116, 45)
+
+[node name="LakeTree33" parent="Node2D" unique_id=408707578 instance=ExtResource("7")]
+position = Vector2(-74, 5)
+
+[node name="LakeTree34" parent="Node2D" unique_id=985755807 instance=ExtResource("7")]
+position = Vector2(-111, 42)
+
+[node name="LakeTree35" parent="Node2D" unique_id=263860740 instance=ExtResource("7")]
+position = Vector2(-85, 12)
+
+[node name="LakeTree57" parent="Node2D" unique_id=1861944760 instance=ExtResource("7")]
+position = Vector2(-58, 39)
+
+[node name="LakeTree43" parent="Node2D" unique_id=383503247 instance=ExtResource("7")]
+position = Vector2(-162, 57)
+
+[node name="LakeTree44" parent="Node2D" unique_id=693189715 instance=ExtResource("7")]
+position = Vector2(-157, 50)
+
+[node name="LakeTree45" parent="Node2D" unique_id=1719878488 instance=ExtResource("7")]
+position = Vector2(-161, 61)
+
+[node name="LakeTree46" parent="Node2D" unique_id=985527675 instance=ExtResource("7")]
+position = Vector2(-157, 41)
+
+[node name="LakeTree47" parent="Node2D" unique_id=17851793 instance=ExtResource("7")]
+position = Vector2(-131, 79)
+
+[node name="LakeTree48" parent="Node2D" unique_id=1806152256 instance=ExtResource("7")]
+position = Vector2(-110, 47)
+
+[node name="LakeTree49" parent="Node2D" unique_id=1159607665 instance=ExtResource("7")]
+position = Vector2(-149, 24)
+
+[node name="LakeTree50" parent="Node2D" unique_id=1583820432 instance=ExtResource("7")]
+position = Vector2(-73, 66)
+
+[node name="LakeTree51" parent="Node2D" unique_id=2030962944 instance=ExtResource("7")]
+position = Vector2(-143, 14)
+
+[node name="LakeTree52" parent="Node2D" unique_id=1928995500 instance=ExtResource("7")]
+position = Vector2(-133, 90)
+
+[node name="LakeTree77" parent="Node2D" unique_id=1228507508 instance=ExtResource("7")]
+position = Vector2(-127, 96)
+
+[node name="LakeTree53" parent="Node2D" unique_id=592854477 instance=ExtResource("7")]
+position = Vector2(-162, 69)
+
+[node name="LakeTree54" parent="Node2D" unique_id=358442696 instance=ExtResource("7")]
+position = Vector2(-158, 61)
+
+[node name="LakeTree36" parent="Node2D" unique_id=1177889377 instance=ExtResource("7")]
+position = Vector2(-119, 94)
+
+[node name="LakeTree37" parent="Node2D" unique_id=802476845 instance=ExtResource("7")]
+position = Vector2(-119, 86)
+
+[node name="LakeTree40" parent="Node2D" unique_id=1812567122 instance=ExtResource("7")]
+position = Vector2(-109, 91)
+
+[node name="LakeTree38" parent="Node2D" unique_id=1943927079 instance=ExtResource("7")]
+position = Vector2(-68, 27)
+
+[node name="LakeTree82" parent="Node2D" unique_id=1553822324 instance=ExtResource("7")]
+position = Vector2(-57, 3)
+
+[node name="LakeTree86" parent="Node2D" unique_id=252820642 instance=ExtResource("7")]
+position = Vector2(-91, 134)
+
+[node name="LakeTree87" parent="Node2D" unique_id=905260379 instance=ExtResource("7")]
+position = Vector2(-77, 53)
+
+[node name="LakeTree88" parent="Node2D" unique_id=413667149 instance=ExtResource("7")]
+position = Vector2(-111, 68)
+
+[node name="LakeTree92" parent="Node2D" unique_id=350680389 instance=ExtResource("7")]
+position = Vector2(-135, 111)
+
+[node name="LakeTree96" parent="Node2D" unique_id=1161611157 instance=ExtResource("7")]
+position = Vector2(-87, 115)
+
+[node name="LakeTree97" parent="Node2D" unique_id=1677217452 instance=ExtResource("7")]
+position = Vector2(-75, 115)
+
+[node name="LakeTree98" parent="Node2D" unique_id=145634688 instance=ExtResource("7")]
+position = Vector2(-80, 33)
+
+[node name="LakeTree91" parent="Node2D" unique_id=1213523333 instance=ExtResource("7")]
+position = Vector2(-125, 62)
+
+[node name="LakeTree58" parent="Node2D" unique_id=361532178 instance=ExtResource("7")]
+position = Vector2(-65, 47)
+
+[node name="LakeTree56" parent="Node2D" unique_id=350168302 instance=ExtResource("7")]
+position = Vector2(-162, 81)
+
+[node name="Fence" parent="Node2D" unique_id=379571039 instance=ExtResource("6")]
+points = PackedVector2Array(203, 18, 179, 25, 160, 15, 137, 24, 113, 20, 90, 14, 64, 22, 37, 20, 10, 14, -9, 20, -31, 17, -46, 26, -53, 40, -43, 61, -55, 79, -56, 102, -46, 118, -33, 129, -14, 134, 18, 138, 42, 128, 59, 136, 83, 126, 115, 136, 137, 128, 163, 135, 180, 123, 201, 128)
+
+[node name="Dodo" parent="Node2D" unique_id=1215201225 instance=ExtResource("9")]
+position = Vector2(108, 45)
+
+[node name="GreenLeafGenerator" parent="Node2D" unique_id=863623710 instance=ExtResource("10")]
+position = Vector2(-82, 64)
+
+[node name="GreenLeafGenerator2" parent="Node2D" unique_id=1253880273 instance=ExtResource("10")]
+position = Vector2(-75, 71)
+
+[node name="GreenLeafGenerator3" parent="Node2D" unique_id=78336470 instance=ExtResource("10")]
+position = Vector2(-64, 55)
+
+[node name="GreenLeafGenerator4" parent="Node2D" unique_id=353862640 instance=ExtResource("10")]
+position = Vector2(-78, 47)
+
+[node name="GreenLeafGenerator6" parent="Node2D" unique_id=813282012 instance=ExtResource("10")]
+position = Vector2(-79, 30)
+
+[node name="GreenLeafGenerator8" parent="Node2D" unique_id=747430690 instance=ExtResource("10")]
+position = Vector2(-63, 16)
+
+[node name="GreenLeafGenerator9" parent="Node2D" unique_id=401645673 instance=ExtResource("10")]
+position = Vector2(-79, 19)
+
+[node name="GreenLeafGenerator10" parent="Node2D" unique_id=1944014447 instance=ExtResource("10")]
+position = Vector2(-119, 40)
+
+[node name="GreenLeafGenerator11" parent="Node2D" unique_id=1096529051 instance=ExtResource("10")]
+position = Vector2(-111, 59)
+
+[node name="GreenLeafGenerator13" parent="Node2D" unique_id=1266373641 instance=ExtResource("10")]
+position = Vector2(-116, 83)
+
+[node name="GreenLeafGenerator14" parent="Node2D" unique_id=775583951 instance=ExtResource("10")]
+position = Vector2(-130, 96)
+
+[node name="GreenLeafGenerator15" parent="Node2D" unique_id=288804499 instance=ExtResource("10")]
+position = Vector2(-130, 117)
+
+[node name="GreenLeafGenerator17" parent="Node2D" unique_id=45488007 instance=ExtResource("10")]
+position = Vector2(-111, 96)
+
+[node name="GreenLeafGenerator18" parent="Node2D" unique_id=729323120 instance=ExtResource("10")]
+position = Vector2(-118, 108)
+
+[node name="GreenLeafGenerator19" parent="Node2D" unique_id=77571678 instance=ExtResource("10")]
+position = Vector2(-159, 73)
+
+[node name="GreenLeafGenerator21" parent="Node2D" unique_id=50564197 instance=ExtResource("10")]
+position = Vector2(-156, 54)
+
+[node name="GreenLeafGenerator22" parent="Node2D" unique_id=1493053773 instance=ExtResource("10")]
+position = Vector2(-154, 40)
+
+[node name="GreenLeafGenerator24" parent="Node2D" unique_id=922061971 instance=ExtResource("10")]
+position = Vector2(-142, 6)
+
+[node name="GreenLeafGenerator25" parent="Node2D" unique_id=677865620 instance=ExtResource("10")]
+position = Vector2(-162, -9)
+
+[node name="GreenLeafGenerator26" parent="Node2D" unique_id=901998469 instance=ExtResource("10")]
+position = Vector2(-187, -6)
+
+[node name="GreenLeafGenerator28" parent="Node2D" unique_id=1630285328 instance=ExtResource("10")]
+position = Vector2(-188, 41)
+
+[node name="GreenLeafGenerator29" parent="Node2D" unique_id=262668195 instance=ExtResource("10")]
+position = Vector2(-200, 52)
+
+[node name="GreenLeafGenerator31" parent="Node2D" unique_id=1724619989 instance=ExtResource("10")]
+position = Vector2(-202, 86)
+
+[node name="GreenLeafGenerator32" parent="Node2D" unique_id=1482212122 instance=ExtResource("10")]
+position = Vector2(-191, 107)
+
+[node name="GreenLeafGenerator33" parent="Node2D" unique_id=817786969 instance=ExtResource("10")]
+position = Vector2(-186, 130)
+
+[node name="GreenLeafGenerator35" parent="Node2D" unique_id=1046964448 instance=ExtResource("10")]
+position = Vector2(-122, 137)
+
+[node name="GreenLeafGenerator37" parent="Node2D" unique_id=58414799 instance=ExtResource("10")]
+position = Vector2(-101, -11)
+
+[node name="GreenLeafGenerator38" parent="Node2D" unique_id=1171115814 instance=ExtResource("10")]
+position = Vector2(-85, -5)
+
+[node name="GreenLeafGenerator39" parent="Node2D" unique_id=1081513684 instance=ExtResource("10")]
+position = Vector2(-48, -10)
+
+[node name="GreenLeafGenerator41" parent="Node2D" unique_id=408905489 instance=ExtResource("10")]
+position = Vector2(-77, 113)
+
+[node name="GreenLeafGenerator43" parent="Node2D" unique_id=1308007344 instance=ExtResource("10")]
+position = Vector2(-38, 141)
+
+[node name="GreenLeafGenerator47" parent="Node2D" unique_id=1644985657 instance=ExtResource("10")]
+position = Vector2(-9, 145)
+
+[node name="GreenLeafGenerator48" parent="Node2D" unique_id=1548413598 instance=ExtResource("10")]
+position = Vector2(18, 154)
+
+[node name="GreenLeafGenerator49" parent="Node2D" unique_id=1115611240 instance=ExtResource("10")]
+position = Vector2(37, 143)
+
+[node name="GreenLeafGenerator50" parent="Node2D" unique_id=151948472 instance=ExtResource("10")]
+position = Vector2(72, 139)
+
+[node name="GreenLeafGenerator51" parent="Node2D" unique_id=1273779952 instance=ExtResource("10")]
+position = Vector2(105, 147)
+
+[node name="GreenLeafGenerator52" parent="Node2D" unique_id=1846789002 instance=ExtResource("10")]
+position = Vector2(134, 146)
+
+[node name="GreenLeafGenerator53" parent="Node2D" unique_id=112041353 instance=ExtResource("10")]
+position = Vector2(157, 139)
+
+[node name="GreenLeafGenerator54" parent="Node2D" unique_id=1814393817 instance=ExtResource("10")]
+position = Vector2(192, 136)
+
+[node name="GreenLeafGenerator55" parent="Node2D" unique_id=1876776697 instance=ExtResource("10")]
+position = Vector2(196, -8)
+
+[node name="GreenLeafGenerator56" parent="Node2D" unique_id=524954871 instance=ExtResource("10")]
+position = Vector2(177, -11)
+
+[node name="GreenLeafGenerator57" parent="Node2D" unique_id=409575604 instance=ExtResource("10")]
+position = Vector2(155, -17)
+
+[node name="GreenLeafGenerator58" parent="Node2D" unique_id=1048622599 instance=ExtResource("10")]
+position = Vector2(131, -13)
+
+[node name="GreenLeafGenerator59" parent="Node2D" unique_id=726980416 instance=ExtResource("10")]
+position = Vector2(105, -18)
+
+[node name="GreenLeafGenerator60" parent="Node2D" unique_id=1329683902 instance=ExtResource("10")]
+position = Vector2(72, -12)
+
+[node name="GreenLeafGenerator61" parent="Node2D" unique_id=1055518917 instance=ExtResource("10")]
+position = Vector2(52, -6)
+
+[node name="GreenLeafGenerator62" parent="Node2D" unique_id=1171889388 instance=ExtResource("10")]
+position = Vector2(25, -7)
+
+[node name="GreenLeafGenerator63" parent="Node2D" unique_id=1978990164 instance=ExtResource("10")]
+position = Vector2(9, -15)
+
+[node name="GreenLeafGenerator42" parent="Node2D" unique_id=1898047934 instance=ExtResource("10")]
+position = Vector2(-60, 138)
+
+[node name="GreenLeafGenerator44" parent="Node2D" unique_id=1057396674 instance=ExtResource("10")]
+position = Vector2(-14, 146)
+
+[node name="GreenLeafGenerator45" parent="Node2D" unique_id=1568130215 instance=ExtResource("10")]
+position = Vector2(-105, 119)
+
+[node name="GreenLeafGenerator46" parent="Node2D" unique_id=1371324239 instance=ExtResource("10")]
+position = Vector2(-115, 93)
+
+[node name="EvergreenTree2" parent="Node2D" unique_id=226652186 instance=ExtResource("12")]
+position = Vector2(-1, 8)
+
+[node name="EvergreenTree3" parent="Node2D" unique_id=1526544027 instance=ExtResource("12")]
+position = Vector2(17, 8)
+
+[node name="EvergreenTree5" parent="Node2D" unique_id=1822774987 instance=ExtResource("12")]
+position = Vector2(36, 9)
+
+[node name="EvergreenTree6" parent="Node2D" unique_id=1033106266 instance=ExtResource("12")]
+position = Vector2(55, 9)
+
+[node name="EvergreenTree7" parent="Node2D" unique_id=1149793246 instance=ExtResource("12")]
+position = Vector2(72, 6)
+
+[node name="EvergreenTree9" parent="Node2D" unique_id=1735951759 instance=ExtResource("12")]
+position = Vector2(91, 4)
+
+[node name="EvergreenTree11" parent="Node2D" unique_id=2126166126 instance=ExtResource("12")]
+position = Vector2(110, 6)
+
+[node name="EvergreenTree12" parent="Node2D" unique_id=1327380665 instance=ExtResource("12")]
+position = Vector2(126, 9)
+
+[node name="EvergreenTree13" parent="Node2D" unique_id=61294138 instance=ExtResource("12")]
+position = Vector2(141, 7)
+
+[node name="EvergreenTree15" parent="Node2D" unique_id=1729558690 instance=ExtResource("12")]
+position = Vector2(158, 4)
+
+[node name="EvergreenTree16" parent="Node2D" unique_id=132385349 instance=ExtResource("12")]
+position = Vector2(173, 10)
+
+[node name="EvergreenTree17" parent="Node2D" unique_id=1320231637 instance=ExtResource("12")]
+position = Vector2(188, 11)
+
+[node name="EvergreenTree19" parent="Node2D" unique_id=181383172 instance=ExtResource("12")]
+position = Vector2(12, 174)
+
+[node name="EvergreenTree20" parent="Node2D" unique_id=213003051 instance=ExtResource("12")]
+position = Vector2(25, 171)
+
+[node name="EvergreenTree34" parent="Node2D" unique_id=200825838 instance=ExtResource("12")]
+position = Vector2(58, 39)
+
+[node name="EvergreenTree35" parent="Node2D" unique_id=1358139601 instance=ExtResource("12")]
+position = Vector2(91, 30)
+
+[node name="EvergreenTree36" parent="Node2D" unique_id=1764843248 instance=ExtResource("12")]
+position = Vector2(25, 40)
+
+[node name="EvergreenTree37" parent="Node2D" unique_id=1628388370 instance=ExtResource("12")]
+position = Vector2(123, 37)
+
+[node name="EvergreenTree38" parent="Node2D" unique_id=1077958559 instance=ExtResource("12")]
+position = Vector2(175, 33)
+
+[node name="EvergreenTree39" parent="Node2D" unique_id=1803271203 instance=ExtResource("12")]
+position = Vector2(159, 112)
+
+[node name="EvergreenTree40" parent="Node2D" unique_id=1082156539 instance=ExtResource("12")]
+position = Vector2(127, 118)
+
+[node name="EvergreenTree43" parent="Node2D" unique_id=284064875 instance=ExtResource("12")]
+position = Vector2(150, 43)
+
+[node name="EvergreenTree41" parent="Node2D" unique_id=2125794583 instance=ExtResource("12")]
+position = Vector2(58, 94)
+
+[node name="EvergreenTree44" parent="Node2D" unique_id=406623405 instance=ExtResource("12")]
+position = Vector2(100, 105)
+
+[node name="EvergreenTree42" parent="Node2D" unique_id=233159155 instance=ExtResource("12")]
+position = Vector2(19, 102)
+
+[node name="EvergreenTree21" parent="Node2D" unique_id=260067122 instance=ExtResource("12")]
+position = Vector2(40, 161)
+
+[node name="EvergreenTree22" parent="Node2D" unique_id=1693184134 instance=ExtResource("12")]
+position = Vector2(57, 162)
+
+[node name="EvergreenTree23" parent="Node2D" unique_id=539387012 instance=ExtResource("12")]
+position = Vector2(73, 160)
+
+[node name="EvergreenTree24" parent="Node2D" unique_id=1092784197 instance=ExtResource("12")]
+position = Vector2(86, 162)
+
+[node name="EvergreenTree25" parent="Node2D" unique_id=388634053 instance=ExtResource("12")]
+position = Vector2(99, 163)
+
+[node name="EvergreenTree26" parent="Node2D" unique_id=366178928 instance=ExtResource("12")]
+position = Vector2(115, 168)
+
+[node name="EvergreenTree27" parent="Node2D" unique_id=2099552628 instance=ExtResource("12")]
+position = Vector2(130, 164)
+
+[node name="EvergreenTree28" parent="Node2D" unique_id=1649638643 instance=ExtResource("12")]
+position = Vector2(142, 166)
+
+[node name="EvergreenTree29" parent="Node2D" unique_id=261622527 instance=ExtResource("12")]
+position = Vector2(154, 158)
+
+[node name="EvergreenTree30" parent="Node2D" unique_id=1124113686 instance=ExtResource("12")]
+position = Vector2(171, 156)
+
+[node name="EvergreenTree31" parent="Node2D" unique_id=955580052 instance=ExtResource("12")]
+position = Vector2(189, 150)
+
+[node name="Barrel" parent="Node2D" unique_id=1111555177 instance=ExtResource("14")]
+position = Vector2(32, 119)
+
+[node name="Barrel2" parent="Node2D" unique_id=1674854485 instance=ExtResource("14")]
+position = Vector2(50, 112)
+
+[node name="Barrel3" parent="Node2D" unique_id=1113553161 instance=ExtResource("14")]
+position = Vector2(68, 114)
+
+[node name="Log" parent="Node2D" unique_id=733328584 instance=ExtResource("15")]
+position = Vector2(100, 123)
+angle = 200.0
+
+[node name="Rock" parent="Node2D" unique_id=905269616 instance=ExtResource("16")]
+position = Vector2(42, 85)
+
+[node name="Rock2" parent="Node2D" unique_id=888826199 instance=ExtResource("16")]
+position = Vector2(160, 121)
+
+[node name="Rock3" parent="Node2D" unique_id=1975598640 instance=ExtResource("16")]
+position = Vector2(157, 27)
+
+[node name="Rock4" parent="Node2D" unique_id=1550488793 instance=ExtResource("16")]
+position = Vector2(14, 125)
+
+[node name="Rock5" parent="Node2D" unique_id=1678051418 instance=ExtResource("16")]
+position = Vector2(-46, 100)
+
+[node name="Rock6" parent="Node2D" unique_id=294353229 instance=ExtResource("16")]
+position = Vector2(-34, 65)
+
+[node name="Wheat2" parent="Node2D" unique_id=539011124 instance=ExtResource("17")]
+position = Vector2(142, 118)
+
+[node name="Wheat3" parent="Node2D" unique_id=788418858 instance=ExtResource("17")]
+position = Vector2(34, 100)
+
+[node name="Wheat4" parent="Node2D" unique_id=1400941151 instance=ExtResource("17")]
+position = Vector2(179, 101)
+
+[node name="Wheat7" parent="Node2D" unique_id=834960107 instance=ExtResource("17")]
+position = Vector2(140, 29)
+
+[node name="Wheat9" parent="Node2D" unique_id=990379117 instance=ExtResource("17")]
+position = Vector2(107, 26)
+
+[node name="Wheat10" parent="Node2D" unique_id=1622737626 instance=ExtResource("17")]
+position = Vector2(73, 29)
+
+[node name="Wheat11" parent="Node2D" unique_id=1749853752 instance=ExtResource("17")]
+position = Vector2(0, 26)
+
+[node name="Wheat12" parent="Node2D" unique_id=1003151618 instance=ExtResource("17")]
+position = Vector2(-42, 40)
+
+[node name="Wheat13" parent="Node2D" unique_id=1784629746 instance=ExtResource("17")]
+position = Vector2(-13, 121)
+
+[node name="Wheat14" parent="Node2D" unique_id=2080624104 instance=ExtResource("17")]
+position = Vector2(-44, 79)
+
+[node name="Wheat8" parent="Node2D" unique_id=2093440386 instance=ExtResource("17")]
+position = Vector2(83, 93)
+
+[node name="Mushroom" parent="Node2D" unique_id=861415070 instance=ExtResource("18")]
+position = Vector2(41, 40)
+
+[node name="Mushroom2" parent="Node2D" unique_id=962613250 instance=ExtResource("18")]
+position = Vector2(175, 113)
+
+[node name="Mushroom3" parent="Node2D" unique_id=1625892043 instance=ExtResource("18")]
+position = Vector2(-10, 26)
+
+[node name="Stump" parent="Node2D" unique_id=946092411 instance=ExtResource("19")]
+position = Vector2(113, 107)
+
+[node name="Stump2" parent="Node2D" unique_id=520500956 instance=ExtResource("19")]
+position = Vector2(9, 46)
+
+[node name="ToMainArea" type="Area2D" parent="." unique_id=1699717042]
+position = Vector2(200, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToMainArea" unique_id=1614115319]
+position = Vector2(0, 71)
+shape = SubResource("1")
+
+[node name="ChangeCameraLeft" type="Area2D" parent="." unique_id=304013554]
+position = Vector2(-7, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeCameraLeft" unique_id=2020365]
+position = Vector2(-1.25, 74)
+shape = SubResource("2")
+
+[node name="ChangeCameraRight" type="Area2D" parent="." unique_id=1154976386]
+position = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeCameraRight" unique_id=1174590874]
+position = Vector2(-1.25, 74)
+shape = SubResource("2")
+
+[node name="WaterAreas" type="Node2D" parent="." unique_id=484860802]
+visible = false
+
+[node name="Water" type="Area2D" parent="WaterAreas" unique_id=2025682047]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water" unique_id=682379813]
+position = Vector2(-19, -25)
+shape = SubResource("3")
+
+[node name="Water21" type="Area2D" parent="WaterAreas" unique_id=670046451]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water21" unique_id=1259269471]
+position = Vector2(76, -17)
+shape = SubResource("3")
+
+[node name="Water22" type="Area2D" parent="WaterAreas" unique_id=164734750]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water22" unique_id=827382587]
+position = Vector2(101, -11)
+shape = SubResource("3")
+
+[node name="Water23" type="Area2D" parent="WaterAreas" unique_id=689063774]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water23" unique_id=523926554]
+position = Vector2(124, 44)
+shape = SubResource("3")
+
+[node name="Water24" type="Area2D" parent="WaterAreas" unique_id=398052082]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water24" unique_id=456573244]
+position = Vector2(143, -8)
+shape = SubResource("3")
+
+[node name="Water25" type="Area2D" parent="WaterAreas" unique_id=855120987]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water25" unique_id=1916619138]
+position = Vector2(156, 20)
+shape = SubResource("3")
+
+[node name="Water26" type="Area2D" parent="WaterAreas" unique_id=1235328788]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water26" unique_id=1786620609]
+position = Vector2(166, 47)
+shape = SubResource("3")
+
+[node name="Water27" type="Area2D" parent="WaterAreas" unique_id=682196166]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water27" unique_id=377436045]
+position = Vector2(101, 80)
+shape = SubResource("3")
+
+[node name="Water2" type="Area2D" parent="WaterAreas" unique_id=2114628900]
+position = Vector2(-167, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water2" unique_id=1970944107]
+position = Vector2(-41, 4)
+shape = SubResource("3")
+
+[node name="Water3" type="Area2D" parent="WaterAreas" unique_id=297280734]
+position = Vector2(-121, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water3" unique_id=1192113666]
+position = Vector2(-32, -8)
+shape = SubResource("3")
+
+[node name="Water4" type="Area2D" parent="WaterAreas" unique_id=1515914400]
+position = Vector2(-94, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water4" unique_id=1680852382]
+position = Vector2(-33, -6)
+shape = SubResource("3")
+
+[node name="Water28" type="Area2D" parent="WaterAreas" unique_id=1439571590]
+position = Vector2(-94, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water28" unique_id=1363355412]
+position = Vector2(47, 119)
+shape = SubResource("3")
+
+[node name="Water29" type="Area2D" parent="WaterAreas" unique_id=102236987]
+position = Vector2(-94, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water29" unique_id=1348871109]
+position = Vector2(90, 123)
+shape = SubResource("3")
+
+[node name="Water5" type="Area2D" parent="WaterAreas" unique_id=179644053]
+position = Vector2(-67, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water5" unique_id=156774697]
+position = Vector2(-24, 15)
+shape = SubResource("3")
+
+[node name="Water30" type="Area2D" parent="WaterAreas" unique_id=1103859017]
+position = Vector2(-91, 53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water30" unique_id=100680042]
+position = Vector2(-36, -6)
+shape = SubResource("3")
+
+[node name="Water6" type="Area2D" parent="WaterAreas" unique_id=990571231]
+position = Vector2(-46, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water6" unique_id=623599473]
+position = Vector2(-24, 18)
+shape = SubResource("3")
+
+[node name="Water31" type="Area2D" parent="WaterAreas" unique_id=1137654307]
+position = Vector2(-46, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water31" unique_id=577884835]
+position = Vector2(63, 74)
+shape = SubResource("3")
+
+[node name="Water7" type="Area2D" parent="WaterAreas" unique_id=1249420192]
+position = Vector2(-40, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water7" unique_id=171407486]
+position = Vector2(-25, 15)
+shape = SubResource("3")
+
+[node name="Water8" type="Area2D" parent="WaterAreas" unique_id=1481813417]
+position = Vector2(-47, 58)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water8" unique_id=802062699]
+position = Vector2(-25, 14)
+shape = SubResource("3")
+
+[node name="Water9" type="Area2D" parent="WaterAreas" unique_id=874232199]
+position = Vector2(-52, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water9" unique_id=674262476]
+position = Vector2(-26, 16)
+shape = SubResource("3")
+
+[node name="Water10" type="Area2D" parent="WaterAreas" unique_id=1275494773]
+position = Vector2(-55, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water10" unique_id=339369037]
+position = Vector2(-26, 15)
+shape = SubResource("3")
+
+[node name="Water11" type="Area2D" parent="WaterAreas" unique_id=536742439]
+position = Vector2(-68, 95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water11" unique_id=127614531]
+position = Vector2(-25, 15)
+shape = SubResource("3")
+
+[node name="Water12" type="Area2D" parent="WaterAreas" unique_id=650668478]
+position = Vector2(-87, 103)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water12" unique_id=354346064]
+position = Vector2(-25, 15)
+shape = SubResource("3")
+
+[node name="Water13" type="Area2D" parent="WaterAreas" unique_id=1611332829]
+position = Vector2(-109, 105)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water13" unique_id=773754153]
+position = Vector2(-24, 15)
+shape = SubResource("3")
+
+[node name="Water14" type="Area2D" parent="WaterAreas" unique_id=20103375]
+position = Vector2(-128, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water14" unique_id=1631836459]
+position = Vector2(-24, 15)
+shape = SubResource("3")
+
+[node name="Water15" type="Area2D" parent="WaterAreas" unique_id=2049407766]
+position = Vector2(-160, 110)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water15" unique_id=1959140712]
+position = Vector2(-24, 15)
+shape = SubResource("3")
+
+[node name="Water16" type="Area2D" parent="WaterAreas" unique_id=638926979]
+position = Vector2(-168, 81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water16" unique_id=621124471]
+position = Vector2(-24, 15)
+shape = SubResource("3")
+
+[node name="Water17" type="Area2D" parent="WaterAreas" unique_id=1941674459]
+position = Vector2(-168, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water17" unique_id=193001318]
+position = Vector2(-32, 5)
+shape = SubResource("3")
+
+[node name="Water18" type="Area2D" parent="WaterAreas" unique_id=922670976]
+position = Vector2(-151, 75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water18" unique_id=1464964767]
+position = Vector2(-15, -1)
+shape = SubResource("3")
+
+[node name="Water19" type="Area2D" parent="WaterAreas" unique_id=220033544]
+position = Vector2(-126, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water19" unique_id=401271508]
+position = Vector2(-28, 12)
+shape = SubResource("3")
+
+[node name="Water20" type="Area2D" parent="WaterAreas" unique_id=1299457212]
+position = Vector2(-98, 68)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/Water20" unique_id=1712995233]
+position = Vector2(-24, 15)
+shape = SubResource("3")
+
+[node name="EggLocation" type="Marker2D" parent="." unique_id=940719232]
+position = Vector2(89, 47)
+
+[node name="EggLocation2" type="Marker2D" parent="." unique_id=361723501]
+position = Vector2(131, 44)
+
+[node name="WindGenerator" parent="." unique_id=605479341 instance=ExtResource("11")]
+
+[node name="WindStart" type="Area2D" parent="." unique_id=502138419]
+position = Vector2(-177, 56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindStart" unique_id=296054610]
+shape = SubResource("5")
+
+[connection signal="tree_exiting" from="." to="." method="_on_WestArea_tree_exiting"]
+[connection signal="body_entered" from="ToMainArea" to="." method="_on_ToMainArea_body_entered"]
+[connection signal="body_entered" from="ChangeCameraLeft" to="." method="_on_ChangeCameraLeft_body_entered"]
+[connection signal="body_entered" from="ChangeCameraRight" to="." method="_on_ChangeCameraRight_body_entered"]
+[connection signal="area_entered" from="WindStart" to="." method="_on_WindStart_area_entered"]
+[connection signal="body_entered" from="WindStart" to="." method="_on_WindStart_body_entered"]

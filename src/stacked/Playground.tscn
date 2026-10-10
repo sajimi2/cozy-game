@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/Slime.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://src/stacked/Tree.tscn" id="2"]
+
+[node name="Playground" type="Node2D" unique_id=935530088]
+
+[node name="Tree" parent="." unique_id=1718921471 instance=ExtResource("2")]
+position = Vector2(55, 79)
+
+[node name="Slime" parent="." unique_id=905386460 instance=ExtResource("1")]
+position = Vector2(143, 97)
+texture = null
+stack_offset = 2

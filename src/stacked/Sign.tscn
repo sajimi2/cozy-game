@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/stacked/Sign.png" id="1"]
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Sign.gd" id="3"]
+[ext_resource type="PackedScene" path="res://src/ui/Interactable.tscn" id="4"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 3.0
+
+[node name="Sign" type="StaticBody2D" unique_id=1337001188]
+script = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1746173077]
+shape = SubResource("1")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1564614532]
+
+[node name="StackedSprite" parent="Node2D" unique_id=1439481271 instance=ExtResource("2")]
+texture = ExtResource("1")
+hframes = 14
+shadow_radius = 4
+
+[node name="Interactable" parent="Node2D" unique_id=152007545 instance=ExtResource("4")]
+position = Vector2(0, -1)
+text_to_say = "Welcome There!"
+circle_radius = 5
+collision_radius = 26
+starting_arc_angle = 2318.74
+
+[connection signal="entered" from="Node2D/Interactable" to="." method="_on_Interactable_entered"]
+[connection signal="exited" from="Node2D/Interactable" to="." method="_on_Interactable_exited"]
+[connection signal="interacted" from="Node2D/Interactable" to="." method="_on_Interactable_interacted"]

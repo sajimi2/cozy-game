@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/BarnSheep.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Sheep.png" id="4"]
+
+[node name="BarnSheep" type="Node2D" unique_id=764591020]
+script = ExtResource("2")
+
+[node name="InteractableCreature" parent="." unique_id=1791910585 instance=ExtResource("1")]
+starting_rotation = -30
+hframes = 12
+texture = ExtResource("4")
+shadow_radius = 0
+arc_radius = 12
+arc_collision_radius = 20
+bubble_offset = Vector2(0, -24)
+
+[connection signal="entered" from="InteractableCreature" to="." method="_on_InteractableCreature_entered"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Sheep.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Sheep.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_0.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_7.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_4.png" id="6"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_6.png" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_9.png" id="8"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_8.png" id="9"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_5.png" id="10"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_2.png" id="11"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_1.png" id="12"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Numbers/Number_3.png" id="13"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Heart.png" id="14"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/SadFace.png" id="15"]
+
+[node name="Sheep" type="Node2D" unique_id=244974484]
+script = ExtResource("3")
+symbols = [ExtResource("4"), ExtResource("12"), ExtResource("11"), ExtResource("13"), ExtResource("6"), ExtResource("10"), ExtResource("7"), ExtResource("5"), ExtResource("9"), ExtResource("8"), ExtResource("14"), ExtResource("15")]
+
+[node name="InteractableCreature" parent="." unique_id=211997863 instance=ExtResource("1")]
+starting_rotation = 200
+hframes = 12
+texture = ExtResource("2")
+shadow_radius = 0
+arc_radius = 12
+arc_collision_radius = 32
+bubble_offset = Vector2(0, -24)
+
+[connection signal="entered" from="InteractableCreature" to="." method="_on_InteractableCreature_entered"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

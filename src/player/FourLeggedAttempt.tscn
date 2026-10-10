@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/player/FourLeggedAttempt.gd" id="1"]
+
+[sub_resource type="CircleShape2D" id="1"]
+
+[node name="FourLegAttempt" type="CharacterBody2D" unique_id=820919869]
+motion_mode = 1
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=450326795]
+shape = SubResource("1")
+
+[node name="TopLeftLegEnd" type="Marker2D" parent="." unique_id=1228638051]
+
+[node name="BottomLeftLegEnd" type="Marker2D" parent="." unique_id=1509099466]
+
+[node name="BottomRightLegEnd" type="Marker2D" parent="." unique_id=1566212585]
+
+[node name="TopRightLegEnd" type="Marker2D" parent="." unique_id=129868765]
+
+[node name="FrontLegsAxle" type="Marker2D" parent="." unique_id=262951973]
+
+[node name="BackLegsAxle" type="Marker2D" parent="." unique_id=1893571686]

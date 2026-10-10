@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/LakeTree.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Tree_4.png" id="3"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 2.0
+height = 6.0
+
+[node name="LakeTree" type="StaticBody2D" unique_id=1765884326 groups=["lake_trees"]]
+script = ExtResource("2")
+tree_sprites = [ExtResource("3")]
+
+[node name="StackedSprite" parent="." unique_id=1658247896 instance=ExtResource("1")]
+position = Vector2(0, 26)
+texture = ExtResource("3")
+hframes = 20
+stack_offset = 2
+
+[node name="TopCollision" type="CollisionShape2D" parent="." unique_id=880257917]
+shape = SubResource("1")
+disabled = true
+
+[node name="MidCollision" type="CollisionShape2D" parent="." unique_id=71990418]
+position = Vector2(0, 10)
+shape = SubResource("1")
+disabled = true
+
+[node name="BottomCollision" type="CollisionShape2D" parent="." unique_id=1248129070]
+position = Vector2(0, 20)
+shape = SubResource("1")

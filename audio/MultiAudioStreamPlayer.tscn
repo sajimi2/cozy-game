@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://audio/MultiAudioStreamPlayer.gd" id="1"]
+
+[node name="MultiAudioStreamPlayer" type="Node" unique_id=508636829]
+script = ExtResource("1")
+audio_files = Array[AudioStream]([null, null, null])
+
+[node name="Player_0" type="AudioStreamPlayer" parent="." unique_id=2037240199]
+bus = &"SFX"
+
+[node name="Player_1" type="AudioStreamPlayer" parent="." unique_id=1958463631]
+bus = &"SFX"
+
+[node name="Player_2" type="AudioStreamPlayer" parent="." unique_id=1810572848]
+bus = &"SFX"
+
+[node name="Player_3" type="AudioStreamPlayer" parent="." unique_id=2003408771]
+bus = &"SFX"
+
+[node name="Player_4" type="AudioStreamPlayer" parent="." unique_id=982825197]
+bus = &"SFX"
+
+[node name="Player_5" type="AudioStreamPlayer" parent="." unique_id=1096647102]
+bus = &"SFX"

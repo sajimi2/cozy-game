@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/Silo.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Silo.gd" id="3"]
+
+[node name="Silo" type="Node2D" unique_id=2092594573]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=692061926 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 40

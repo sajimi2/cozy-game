@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Heart.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/FoundEgg.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Egg.png" id="4"]
+
+[node name="FoundEgg" type="Node2D" unique_id=1417618084]
+script = ExtResource("3")
+symbols = [ExtResource("2")]
+
+[node name="InteractableCreature" parent="." unique_id=1566616100 instance=ExtResource("1")]
+starting_rotation = 30
+turn_towards_player = false
+hframes = 8
+texture = ExtResource("4")
+shadow_radius = 4
+arc_radius = 6
+arc_collision_radius = 12
+bubble_offset = Vector2(0, -19)
+
+[connection signal="entered" from="InteractableCreature" to="." method="_on_InteractableCreature_entered"]
+[connection signal="exited" from="InteractableCreature" to="." method="_on_InteractableCreature_exited"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

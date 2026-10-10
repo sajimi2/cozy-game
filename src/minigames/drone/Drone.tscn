@@ -1,0 +1,128 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/Drone.png" id="2"]
+[ext_resource type="Script" path="res://src/minigames/drone/Drone.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/Propeller.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/ui/ChatBubble.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/ButtonPress.png" id="6"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="4"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("5")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("5")
+region = Rect2(36, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("5")
+region = Rect2(54, 0, 18, 16)
+
+[sub_resource type="SpriteFrames" id="9"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Drone" type="CharacterBody2D" unique_id=613558759 groups=["drone"]]
+motion_mode = 1
+script = ExtResource("3")
+shadow_color = Color(0.054902, 0.0901961, 0.290196, 0.207843)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346897876]
+shape = SubResource("1")
+disabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=932804785]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=588274556]
+shape = SubResource("4")
+disabled = true
+
+[node name="Drone" parent="." unique_id=571180960 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 5
+shadow_radius = 0
+
+[node name="Propellers" type="Node2D" parent="." unique_id=1878155721]
+rotation = -6.28319
+
+[node name="Propeller" type="Sprite2D" parent="Propellers" unique_id=1970374814]
+position = Vector2(-5, -9)
+rotation = 1.0472
+texture = ExtResource("4")
+
+[node name="Propeller2" type="Sprite2D" parent="Propellers" unique_id=1941034265]
+position = Vector2(5, -9)
+rotation = 1.0472
+texture = ExtResource("4")
+
+[node name="Propeller3" type="Sprite2D" parent="Propellers" unique_id=1632958590]
+position = Vector2(5, 1)
+rotation = 1.0472
+texture = ExtResource("4")
+
+[node name="Propeller4" type="Sprite2D" parent="Propellers" unique_id=569583784]
+position = Vector2(-5, 1)
+rotation = 1.0472
+texture = ExtResource("4")
+
+[node name="FlyingCollider" type="Area2D" parent="." unique_id=126192427]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyingCollider" unique_id=1884164991]
+shape = SubResource("2")
+disabled = true
+
+[node name="LandedCollider" type="Area2D" parent="." unique_id=830503056]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandedCollider" unique_id=1620521305]
+shape = SubResource("3")
+
+[node name="Bubble" type="AnimatedSprite2D" parent="." unique_id=1991249504]
+visible = false
+z_index = 1
+position = Vector2(0, -18)
+sprite_frames = SubResource("9")
+frame = 3
+
+[node name="Symbol" type="Sprite2D" parent="Bubble" unique_id=869045474]
+texture = ExtResource("6")
+hframes = 4
+frame = 1
+
+[connection signal="area_entered" from="FlyingCollider" to="." method="_on_FlyingCollider_area_entered"]
+[connection signal="body_entered" from="FlyingCollider" to="." method="_on_FlyingCollider_body_entered"]
+[connection signal="area_entered" from="LandedCollider" to="." method="_on_LandedCollider_area_entered"]
+[connection signal="frame_changed" from="Bubble" to="." method="_on_Bubble_frame_changed"]

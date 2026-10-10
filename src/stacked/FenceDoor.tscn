@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/areas/FenceDoor.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/FenceDoor.gd" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 2)
+
+[node name="FenceDoor" type="Node2D" unique_id=244311982]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=692809592 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 10
+shadow_radius = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=122021196]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=838638372]
+position = Vector2(0, -1)
+shape = SubResource("1")
+disabled = true

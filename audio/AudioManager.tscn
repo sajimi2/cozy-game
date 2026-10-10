@@ -1,0 +1,281 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://audio/MultiAudioStreamPlayer.tscn" id="1"]
+[ext_resource type="AudioStream" path="res://audio/sfx/Player/foot_1_real.wav" id="2"]
+[ext_resource type="AudioStream" path="res://audio/sfx/Player/foot_2_real.wav" id="3"]
+[ext_resource type="Script" path="res://audio/AudioManager.gd" id="4"]
+[ext_resource type="AudioStream" path="res://audio/sfx/placeholders/placeholder2.wav" id="5"]
+[ext_resource type="AudioStream" path="res://audio/sfx/placeholders/placeholder6.wav" id="6"]
+[ext_resource type="AudioStream" path="res://audio/sfx/Interactions/bubble.wav" id="7"]
+[ext_resource type="AudioStream" path="res://audio/sfx/tied.wav" id="8"]
+[ext_resource type="AudioStream" path="res://audio/sfx/Minigames/ministart.wav" id="9"]
+[ext_resource type="AudioStream" path="res://audio/music/mainmus1.ogg" id="10"]
+[ext_resource type="AudioStream" path="res://audio/music/minigame.ogg" id="11"]
+[ext_resource type="AudioStream" path="res://audio/music/mainmus7.ogg" id="12"]
+[ext_resource type="AudioStream" path="res://audio/music/mainmus2.ogg" id="13"]
+[ext_resource type="AudioStream" path="res://audio/music/mainmus5.ogg" id="14"]
+[ext_resource type="AudioStream" path="res://audio/music/mainmus3.ogg" id="15"]
+[ext_resource type="AudioStream" path="res://audio/music/mainmus6.ogg" id="16"]
+[ext_resource type="AudioStream" path="res://audio/music/mainmus4.ogg" id="17"]
+[ext_resource type="AudioStream" path="res://audio/sfx/changeopt.wav" id="18"]
+[ext_resource type="AudioStream" path="res://audio/sfx/thunder.wav" id="19"]
+[ext_resource type="AudioStream" path="res://audio/sfx/rain.ogg" id="20"]
+[ext_resource type="AudioStream" path="res://audio/music/ending.ogg" id="21"]
+[ext_resource type="AudioStream" path="res://audio/sfx/RPS/RPS_S.wav" id="22"]
+[ext_resource type="AudioStream" path="res://audio/sfx/RPS/RPS_P.wav" id="23"]
+[ext_resource type="AudioStream" path="res://audio/sfx/RPS/RPS_R.wav" id="24"]
+[ext_resource type="AudioStream" path="res://audio/sfx/Interactions/heart.wav" id="25"]
+[ext_resource type="AudioStream" path="res://audio/sfx/Minigames/miniselect.wav" id="26"]
+[ext_resource type="AudioStream" path="res://audio/sfx/rightanswer.wav" id="27"]
+[ext_resource type="AudioStream" path="res://audio/sfx/wronganswer.wav" id="28"]
+[ext_resource type="AudioStream" path="res://audio/sfx/teleport.wav" id="29"]
+[ext_resource type="AudioStream" path="res://audio/sfx/drone.ogg" id="30"]
+[ext_resource type="AudioStream" path="res://audio/sfx/cancel.wav" id="31"]
+[ext_resource type="AudioStream" path="res://audio/sfx/egg.wav" id="32"]
+[ext_resource type="AudioStream" path="res://audio/sfx/question.wav" id="33"]
+
+[node name="AudioManager" type="Node" unique_id=271844262]
+process_mode = 3
+script = ExtResource("4")
+main_songs = [ExtResource("10"), ExtResource("13"), ExtResource("15"), ExtResource("17"), ExtResource("14"), ExtResource("16"), ExtResource("12")]
+
+[node name="Ambient" type="Node" parent="." unique_id=1368368480]
+
+[node name="Rain" type="AudioStreamPlayer" parent="Ambient" unique_id=566344010]
+stream = ExtResource("20")
+volume_db = -2.0
+
+[node name="Drone" type="AudioStreamPlayer" parent="Ambient" unique_id=713595235]
+stream = ExtResource("30")
+
+[node name="Music" type="Node" parent="." unique_id=248419992]
+
+[node name="MainMusic_1" type="AudioStreamPlayer" parent="Music" unique_id=1055127125]
+stream = ExtResource("10")
+bus = &"Music"
+
+[node name="MainMusic_2" type="AudioStreamPlayer" parent="Music" unique_id=422194514]
+stream = ExtResource("13")
+bus = &"Music"
+
+[node name="MainMusic_3" type="AudioStreamPlayer" parent="Music" unique_id=716113527]
+stream = ExtResource("15")
+bus = &"Music"
+
+[node name="MainMusic_4" type="AudioStreamPlayer" parent="Music" unique_id=620356324]
+stream = ExtResource("17")
+bus = &"Music"
+
+[node name="MainMusic_5" type="AudioStreamPlayer" parent="Music" unique_id=2062538599]
+stream = ExtResource("14")
+bus = &"Music"
+
+[node name="MainMusic_6" type="AudioStreamPlayer" parent="Music" unique_id=1402925491]
+stream = ExtResource("16")
+bus = &"Music"
+
+[node name="MainMusic_7" type="AudioStreamPlayer" parent="Music" unique_id=805887409]
+stream = ExtResource("12")
+bus = &"Music"
+
+[node name="MinigameMusic" type="AudioStreamPlayer" parent="Music" unique_id=1304717919]
+stream = ExtResource("11")
+bus = &"Music"
+
+[node name="EndSceneMusic" type="AudioStreamPlayer" parent="Music" unique_id=799328748]
+stream = ExtResource("21")
+bus = &"Music"
+
+[node name="Sounds" type="Node" parent="." unique_id=267035348]
+
+[node name="Player" type="Node2D" parent="Sounds" unique_id=771656934]
+
+[node name="TakeStep" parent="Sounds/Player" unique_id=2019119807 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("2"), ExtResource("3")])
+volume_db = 3.0
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="Barn" type="Node2D" parent="Sounds" unique_id=1770785101]
+
+[node name="CreditsRevealed" parent="Sounds/Barn" unique_id=1569823699 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("7")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="CreditsHidden" parent="Sounds/Barn" unique_id=153187132 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("6")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="Scarecrow" type="Node2D" parent="Sounds" unique_id=2126441494]
+
+[node name="SpiritSpawned" parent="Sounds/Scarecrow" unique_id=1372734987 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("7")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="TinySpiritSpawned" parent="Sounds/Scarecrow" unique_id=2085211726 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("29")])
+volume_db = -3.0
+pitch_scale = 0.9
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="Lightning" parent="Sounds/Scarecrow" unique_id=944981762 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("19")])
+volume_db = -6.0
+pitch_randomness = 0.5
+randomized_order = true
+
+[node name="Drone" type="Node2D" parent="Sounds" unique_id=1263021765]
+
+[node name="Exploded" parent="Sounds/Drone" unique_id=1563026230 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("29")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="Landed" parent="Sounds/Drone" unique_id=1236342121 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("25")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="Egg" type="Node2D" parent="Sounds" unique_id=1547608393]
+
+[node name="PickupEgg" parent="Sounds/Egg" unique_id=91424838 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("32")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="DeliveredEgg" parent="Sounds/Egg" unique_id=261152723 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("25")])
+volume_db = -1.0
+randomized_order = true
+
+[node name="CornMaze" type="Node2D" parent="Sounds" unique_id=2051476411]
+
+[node name="Teleport" parent="Sounds/CornMaze" unique_id=835592044 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("29")])
+volume_db = -3.0
+pitch_scale = 0.9
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="NumberGuess" type="Node2D" parent="Sounds" unique_id=1367329007]
+
+[node name="RightAnswer" parent="Sounds/NumberGuess" unique_id=1143761337 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("27")])
+randomized_order = true
+
+[node name="WrongAnswer" parent="Sounds/NumberGuess" unique_id=957583580 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("28")])
+volume_db = -2.0
+randomized_order = true
+
+[node name="Minigames" type="Node2D" parent="Sounds" unique_id=1332832918]
+
+[node name="ChangeOptionUsingHand" parent="Sounds/Minigames" unique_id=295728828 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("18")])
+volume_db = -2.0
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="SelectOptionUsingHand" parent="Sounds/Minigames" unique_id=511986282 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("26")])
+volume_db = 2.0
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="CanceledMinigame" parent="Sounds/Minigames" unique_id=1065463052 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("8")])
+volume_db = -1.0
+randomized_order = true
+allow_duplicate_sounds_playing = false
+
+[node name="StartedMinigame" parent="Sounds/Minigames" unique_id=1784559075 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("9")])
+randomized_order = true
+
+[node name="FailedMinigame" parent="Sounds/Minigames" unique_id=336692495 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("31")])
+volume_db = -1.0
+randomized_order = true
+allow_duplicate_sounds_playing = false
+
+[node name="RockPaperScissors" type="Node2D" parent="Sounds" unique_id=1479528224]
+
+[node name="RockBeatScissors" parent="Sounds/RockPaperScissors" unique_id=247539425 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("24")])
+volume_db = 9.0
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="PaperBeatRock" parent="Sounds/RockPaperScissors" unique_id=1559570485 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("23")])
+volume_db = 9.0
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="ScissorsBeatPaper" parent="Sounds/RockPaperScissors" unique_id=731699057 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("22")])
+volume_db = 9.0
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="YouWonRound" parent="Sounds/RockPaperScissors" unique_id=646282551 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("28")])
+volume_db = -4.0
+randomized_order = true
+
+[node name="EnemyWonRound" parent="Sounds/RockPaperScissors" unique_id=1277644649 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("27")])
+randomized_order = true
+
+[node name="TiedRound" parent="Sounds/RockPaperScissors" unique_id=1568844563 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("8")])
+volume_db = 3.0
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="YouWonEntireMatch" parent="Sounds/RockPaperScissors" unique_id=1246265972 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("28")])
+volume_db = -4.0
+randomized_order = true
+
+[node name="EnemyWonEntireMatch" parent="Sounds/RockPaperScissors" unique_id=594948218 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("27")])
+randomized_order = true
+
+[node name="Interactions" type="Node2D" parent="Sounds" unique_id=269154236]
+
+[node name="InteractionBubbleAppeared" parent="Sounds/Interactions" unique_id=104306421 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("7")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="PlayerInteractedWithSomething" parent="Sounds/Interactions" unique_id=325748843 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("5")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="HeartAppears" parent="Sounds/Interactions" unique_id=1305078138 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("25")])
+volume_db = -2.0
+randomized_order = true
+
+[node name="SadFaceAppears" parent="Sounds/Interactions" unique_id=426280028 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("6")])
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="QuestionMarkAppears" parent="Sounds/Interactions" unique_id=672890576 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("33")])
+volume_db = -8.0
+pitch_scale = 1.1
+pitch_randomness = 0.1
+randomized_order = true
+
+[node name="SignShowsProgressHeart" parent="Sounds/Interactions" unique_id=220696071 instance=ExtResource("1")]
+audio_files = Array[AudioStream]([ExtResource("18")])
+pitch_randomness = 0.1
+randomized_order = true

@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Stump.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Stump.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 5.0
+
+[node name="Stump" type="StaticBody2D" unique_id=2056786595]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=2076787137 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 4
+shadow_radius = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=116443909]
+shape = SubResource("1")

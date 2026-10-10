@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/effects/Circle.gd" id="1"]
+[ext_resource type="Script" path="res://src/effects/CircleTransition.gd" id="2"]
+
+[node name="CircleTransition" type="CanvasLayer" unique_id=320701631]
+layer = 5
+script = ExtResource("2")
+
+[node name="Circle" type="Control" parent="." unique_id=447091724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Black" type="ColorRect" parent="Circle" unique_id=58626167]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

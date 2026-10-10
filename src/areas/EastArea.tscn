@@ -1,0 +1,183 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/areas/EastArea.gd" id="1"]
+[ext_resource type="PackedScene" path="res://src/player/Player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://src/stacked/Ostrich.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://src/effects/Fence.tscn" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/Maze.png" id="5"]
+[ext_resource type="PackedScene" path="res://src/stacked/Egg.tscn" id="6"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 160)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(2.5, 162)
+
+[sub_resource type="SegmentShape2D" id="3"]
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(43, 6)
+
+[node name="EastArea" type="Node2D" unique_id=2029190222]
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="." unique_id=337166139]
+show_behind_parent = true
+offset_right = 384.0
+offset_bottom = 144.0
+color = Color(0.741176, 0.576471, 0.32549, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1854247513]
+position = Vector2(86, 71)
+limit_left = 0
+limit_top = 0
+limit_right = 384
+limit_bottom = 144
+position_smoothing_enabled = true
+
+[node name="Maze" type="Sprite2D" parent="." unique_id=1352389056]
+texture = ExtResource("5")
+centered = false
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1095083898]
+
+[node name="Player" parent="Node2D" unique_id=1683054423 instance=ExtResource("2")]
+position = Vector2(21, 68)
+
+[node name="Ostrich" parent="Node2D" unique_id=1185935034 instance=ExtResource("3")]
+position = Vector2(364, 35)
+
+[node name="Fence" parent="Node2D" unique_id=272947419 instance=ExtResource("4")]
+points = PackedVector2Array(-9, 36, 14, 39, 33, 32, 38, 10, 39, -6)
+
+[node name="Fence2" parent="Node2D" unique_id=2057620464 instance=ExtResource("4")]
+points = PackedVector2Array(-15, 119, 15, 108, 28, 119, 37, 134, 34, 150)
+
+[node name="Egg" parent="Node2D" unique_id=1512759921 instance=ExtResource("6")]
+position = Vector2(361, 74)
+
+[node name="ToMainArea" type="Area2D" parent="." unique_id=1270292682]
+position = Vector2(-6, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToMainArea" unique_id=132718982]
+position = Vector2(0, 70)
+shape = SubResource("1")
+
+[node name="ChangeCameraLeft" type="Area2D" parent="." unique_id=1548288033]
+position = Vector2(184, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeCameraLeft" unique_id=826626928]
+position = Vector2(-1.25, 74)
+shape = SubResource("2")
+
+[node name="ChangeCameraRight" type="Area2D" parent="." unique_id=1584795520]
+position = Vector2(201, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeCameraRight" unique_id=644224011]
+position = Vector2(-1.25, 74)
+shape = SubResource("2")
+
+[node name="CornLines" type="Node2D" parent="." unique_id=1560094686]
+
+[node name="Line2D3" type="Line2D" parent="CornLines" unique_id=663608095]
+points = PackedVector2Array(69, 140, 64, 145, 64, 137, 63, 132, 63, 125, 61, 118, 59, 113, 54, 107, 49, 100, 48, 95, 46, 89, 47, 83, 49, 76, 53, 71, 58, 68, 65, 68, 68, 71, 67, 78, 67, 87, 68, 94, 68, 100, 69, 108, 72, 114, 76, 124, 80, 131, 85, 136, 91, 140, 98, 140, 104, 142, 113, 143, 120, 144, 125, 146, 131, 146, 142, 145, 149, 144, 157, 143, 165, 143, 170.39, 143.385, 179, 144, 185, 144, 194, 143, 202, 143, 212, 144, 218.397, 144, 224, 144, 232, 143, 242, 143, 251, 143, 259, 143, 269, 142, 277, 142, 287, 141, 294, 141, 300, 142, 304, 145, 305, 151)
+width = 1.0
+
+[node name="Line2D4" type="Line2D" parent="CornLines" unique_id=1342515037]
+points = PackedVector2Array(147, 34, 137, 30, 125, 28, 118.252, 28.8998, 110, 30, 98, 29, 90, 29, 82, 29, 75.6369, 30.9579, 69, 33, 67.8463, 39.9219, 67, 45, 72.6729, 45.4727, 79, 46, 85.2309, 44.4423, 91, 43, 98.516, 43, 105, 43, 111.931, 42.4669, 118, 42, 127.494, 42, 137, 42, 146.078, 42, 151.386, 42, 159, 42, 167, 42, 173.442, 42.5368, 179, 43, 186, 43, 193, 43, 201, 43, 207, 43, 213, 44, 221, 44, 229, 44, 235, 43, 240.136, 43.428, 247, 44, 251.633, 42.4558, 256, 41, 260.779, 40.5221, 266, 40, 274, 41, 280, 45, 282, 52, 279, 59, 274, 61, 268, 63, 260, 64, 254, 65, 247, 66, 239, 65, 231, 66, 224, 66, 217.863, 65.5617, 210, 65, 200, 65, 193.982, 64.4985, 188, 64, 178, 64, 172.221, 64, 167, 64, 156, 63, 149.262, 63.4492, 141, 64, 134.479, 64.5434, 125, 64, 118, 63, 112, 64, 108, 65, 100, 66, 98, 70, 93, 70, 91, 76, 90, 86, 89, 98, 93, 109, 97, 115, 105, 119, 114, 120, 124, 122, 134, 122, 140.257, 122, 148, 122, 157, 121, 171, 121, 179.95, 121.559, 187, 122, 197, 120, 207, 119, 217, 119, 227, 121, 235.348, 121, 242, 121, 252, 120, 264, 120, 273, 120, 286, 120, 297, 120, 307, 119, 319, 118, 328, 118, 339, 117, 350, 116, 355.982, 114.504, 362, 113, 372, 113, 379, 116, 382, 123, 381, 132, 379, 138, 374, 138, 370, 140, 363.682, 139.473, 358, 139, 352.517, 139.498, 347, 140, 341.423, 140.558, 337, 141, 329, 141, 331, 151)
+width = 1.0
+
+[node name="Line2D5" type="Line2D" parent="CornLines" unique_id=747201702]
+points = PackedVector2Array(-6, 27, 9, 29, 19, 26, 6, 21, 17, 15, 5, 5, 19, 3, 25, 8, 28, 18, 33, 8, 29, -6)
+width = 1.0
+
+[node name="Line2D6" type="Line2D" parent="CornLines" unique_id=1112060267]
+points = PackedVector2Array(26, 143, 20, 131, 15, 127, 8, 129, 0, 134, 8, 140, 15, 138, 1, 149, 20, 146, 20, 155)
+width = 1.0
+
+[node name="Line2D7" type="Line2D" parent="CornLines" unique_id=1050942132]
+points = PackedVector2Array(307, 47, 314, 51, 317, 59, 316, 69, 311, 76, 306.249, 78.3756, 301, 81, 291, 85, 281, 88, 270, 88, 262, 88, 255, 89, 248, 88, 238, 87, 229, 86, 221, 86, 211, 86, 205, 86, 195, 85, 182, 85, 173, 85, 163, 85, 151, 86, 142, 85, 135, 86, 127, 87, 118, 88, 116, 93, 119, 97, 126, 99, 131.852, 99.836, 140, 101, 146.393, 101, 152, 101, 159, 101, 169, 100, 176, 100, 184, 100, 193, 99, 203, 100, 212, 100, 220, 100, 228.474, 100.15, 234, 101, 244, 102, 251, 103, 257, 103, 265.456, 103, 273, 103, 283, 102, 295, 101, 307, 100, 316, 98, 325, 97, 336, 95, 345, 92, 348, 83, 347, 74, 350, 67, 356, 63, 363, 60, 369, 64, 372, 72, 373, 78, 373, 84, 373, 92, 370, 101, 369, 108, 363, 110)
+width = 1.0
+
+[node name="Line2D15" type="Line2D" parent="CornLines" unique_id=1786332585]
+points = PackedVector2Array(308, 48, 310, 52, 312, 57, 312, 61, 310, 66, 308, 70, 303, 74, 297, 78, 291, 81)
+width = 1.0
+
+[node name="Line2D8" type="Line2D" parent="CornLines" unique_id=28505172]
+points = PackedVector2Array(170, 23, 179, 24, 191, 25, 201, 24, 210, 24, 217, 25, 226, 24, 232, 24, 241, 23, 250, 22, 258, 22, 266, 20, 272, 20, 276.618, 18.5588, 285, 18, 290.441, 18, 297, 18, 305, 20, 310.951, 23.2045, 318, 27, 324.727, 31.3244, 332, 36, 337, 45, 340, 55, 341, 65, 340, 75, 337, 84, 330, 90, 318, 95)
+width = 1.0
+
+[node name="Line2D9" type="Line2D" parent="CornLines" unique_id=1842473656]
+points = PackedVector2Array(69, -5, 65, 7, 75, 4, 83, 3, 88.8777, 3, 95, 3, 101, 4, 112, 4, 122, 3, 132, 3, 139.202, 3, 147, 3, 158, 1, 166, 1, 172.317, 1.45124, 180, 2, 193, 2, 205, 3, 217, 2, 228, 3, 238, 1, 248, 0, 260.256, 0.510666, 272, 1, 278, 5, 280, 12, 276, 16, 283, 17, 288, 16, 294, 15, 293, 8, 293, 1, 295, -4)
+width = 1.0
+
+[node name="Line2D10" type="Line2D" parent="CornLines" unique_id=1801858154]
+points = PackedVector2Array(326, -5, 323, -1, 322, 3, 327, 6, 338, 5, 346, 3, 357, 3, 365, 3, 373, 7, 378, 17, 382, 29)
+width = 1.0
+
+[node name="Line2D11" type="Line2D" parent="CornLines" unique_id=1574105631]
+points = PackedVector2Array(80, 38, 89, 36, 97, 36, 103, 36, 112, 37, 123, 36, 133, 35, 141, 36, 150, 37)
+width = 1.0
+
+[node name="Line2D12" type="Line2D" parent="CornLines" unique_id=393284182]
+points = PackedVector2Array(59, 77, 56, 86, 58, 95, 61, 105, 65, 114, 69, 128, 73, 136, 79, 142, 84, 155)
+width = 1.0
+
+[node name="Line2D13" type="Line2D" parent="CornLines" unique_id=154307577]
+points = PackedVector2Array(337, 92, 342, 86, 343, 75, 344, 65, 345, 57, 341, 47, 337.624, 40.7298, 334, 34, 339.678, 39.2722, 343.609, 42.9229, 348, 47, 350, 59, 358, 55, 365, 55, 372, 56, 377, 60, 378, 65, 380, 70.1499, 380, 76, 378.897, 83.1678, 378, 89, 378, 96.1068, 378, 103, 379, 111, 386, 118)
+width = 1.0
+
+[node name="Line2D14" type="Line2D" parent="CornLines" unique_id=286319591]
+points = PackedVector2Array(333, 2, 346, -4, 355.331, -3.45113, 363, -3, 370.575, -0.474937, 375, 1, 381, 6, 383.444, 15.7773, 386, 26, 387, 36, 384.281, 40.5317, 381, 46, 384, 54, 388, 65)
+width = 1.0
+
+[node name="Walls" type="Node2D" parent="." unique_id=282421109]
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=681012386]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1927702564]
+shape = SubResource("3")
+
+[node name="TopLeftTeleporter" type="Area2D" parent="." unique_id=282742887]
+position = Vector2(53, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLeftTeleporter" unique_id=454986032]
+shape = SubResource("4")
+
+[node name="TopRightTeleporter" type="Area2D" parent="." unique_id=535268225]
+position = Vector2(309, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopRightTeleporter" unique_id=354055274]
+shape = SubResource("4")
+
+[node name="BottomLeftTeleporter" type="Area2D" parent="." unique_id=837275105]
+position = Vector2(53, 147)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLeftTeleporter" unique_id=1253339288]
+shape = SubResource("4")
+
+[node name="BottomRightTeleporter" type="Area2D" parent="." unique_id=2097414717]
+position = Vector2(315, 147)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRightTeleporter" unique_id=100354407]
+shape = SubResource("4")
+
+[node name="BottomLeftSpawn" type="Marker2D" parent="." unique_id=1609780088]
+position = Vector2(50, 137)
+
+[node name="BottomRightSpawn" type="Marker2D" parent="." unique_id=1687265995]
+position = Vector2(315, 137)
+
+[node name="TopLeftSpawn" type="Marker2D" parent="." unique_id=1776694511]
+position = Vector2(51, 12)
+
+[node name="TopRightSpawn" type="Marker2D" parent="." unique_id=1684054488]
+position = Vector2(312, 12)
+
+[connection signal="body_entered" from="ToMainArea" to="." method="_on_ToMainArea_body_entered"]
+[connection signal="body_entered" from="ChangeCameraLeft" to="." method="_on_ChangeCameraLeft_body_entered"]
+[connection signal="body_entered" from="ChangeCameraRight" to="." method="_on_ChangeCameraRight_body_entered"]
+[connection signal="body_entered" from="TopLeftTeleporter" to="." method="_on_TopLeftTeleporter_body_entered"]
+[connection signal="body_entered" from="TopRightTeleporter" to="." method="_on_TopRightTeleporter_body_entered"]
+[connection signal="body_entered" from="BottomLeftTeleporter" to="." method="_on_BottomLeftTeleporter_body_entered"]
+[connection signal="body_entered" from="BottomRightTeleporter" to="." method="_on_BottomRightTeleporter_body_entered"]

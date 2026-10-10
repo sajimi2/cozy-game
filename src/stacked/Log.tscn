@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Log.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Log.gd" id="3"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 4.0
+height = 34.0
+
+[node name="Log" type="StaticBody2D" unique_id=1491985400]
+script = ExtResource("3")
+angle = 40.0
+
+[node name="StackedSprite" parent="." unique_id=360500935 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 11
+shadow_radius = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1650855907]
+position = Vector2(0, -2)
+shape = SubResource("1")

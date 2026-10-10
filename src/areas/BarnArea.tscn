@@ -1,0 +1,370 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/HayStack.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://src/stacked/HayHome.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://src/player/Player.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://src/stacked/BarnScarecrow.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://src/stacked/BarnSheep.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="6"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/InsideBarn.png" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/BarnBottomSingleLayer.png" id="8"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/BarnTop.png" id="9"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/BarnSides.png" id="10"]
+[ext_resource type="PackedScene" path="res://src/stacked/Pillar.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://src/stacked/BarnChicken.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://src/stacked/Stool.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://src/stacked/BarnOstrich.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://src/stacked/BarnDodo.tscn" id="15"]
+[ext_resource type="PackedScene" path="res://src/stacked/FoundEgg.tscn" id="16"]
+[ext_resource type="PackedScene" path="res://src/stacked/BarnFrog.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://src/minigames/drone/Drone.tscn" id="18"]
+[ext_resource type="PackedScene" path="res://src/stacked/Barrel.tscn" id="19"]
+[ext_resource type="PackedScene" path="res://src/stacked/Wheat.tscn" id="20"]
+[ext_resource type="PackedScene" path="res://src/stacked/CornStalk.tscn" id="21"]
+[ext_resource type="PackedScene" path="res://src/stacked/Mushroom.tscn" id="22"]
+[ext_resource type="PackedScene" path="res://src/stacked/Podium.tscn" id="23"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/Credits.png" id="24"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/Paper.png" id="25"]
+[ext_resource type="Script" path="res://src/areas/BarnArea.gd" id="26"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 169)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(205, 20)
+
+[node name="BarnArea" type="Node2D" unique_id=541257963 groups=["barn_area"]]
+script = ExtResource("26")
+
+[node name="Walls" type="ColorRect" parent="." unique_id=1895562655]
+visible = false
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 136.0
+color = Color(0.431373, 0.203922, 0.203922, 1)
+
+[node name="Background" type="ColorRect" parent="." unique_id=756263559]
+offset_left = 14.0
+offset_top = 34.0
+offset_right = 178.0
+offset_bottom = 132.0
+color = Color(0.741176, 0.576471, 0.32549, 1)
+
+[node name="BarnTop" parent="." unique_id=21036816 instance=ExtResource("6")]
+position = Vector2(96, 44)
+texture = ExtResource("9")
+hframes = 24
+shadow_radius = 0
+
+[node name="Stool" parent="." unique_id=1351344738 instance=ExtResource("13")]
+position = Vector2(116, 45)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1260506982]
+
+[node name="HayStack" parent="Node2D" unique_id=1370664471 instance=ExtResource("1")]
+position = Vector2(27, 113)
+starting_rotation = 90
+
+[node name="HayStack2" parent="Node2D" unique_id=898914596 instance=ExtResource("1")]
+position = Vector2(48, 113)
+starting_rotation = 90
+
+[node name="HayStack6" parent="Node2D" unique_id=2142991717 instance=ExtResource("1")]
+z_index = 1
+position = Vector2(36, 106)
+starting_rotation = 90
+
+[node name="HayStack3" parent="Node2D" unique_id=1011351262 instance=ExtResource("1")]
+position = Vector2(30, 40)
+starting_rotation = 0
+
+[node name="HayStack7" parent="Node2D" unique_id=1500237706 instance=ExtResource("1")]
+position = Vector2(61, 40)
+starting_rotation = 0
+
+[node name="HayStack9" parent="Node2D" unique_id=1669267155 instance=ExtResource("1")]
+z_index = 1
+position = Vector2(45, 29)
+starting_rotation = 0
+
+[node name="HayStack4" parent="Node2D" unique_id=1905808577 instance=ExtResource("1")]
+position = Vector2(160, 94)
+starting_rotation = 0
+
+[node name="HayStack8" parent="Node2D" unique_id=1171244756 instance=ExtResource("1")]
+z_index = 1
+position = Vector2(159, 102)
+starting_rotation = 0
+
+[node name="HayStack5" parent="Node2D" unique_id=444210837 instance=ExtResource("1")]
+position = Vector2(159, 117)
+starting_rotation = 0
+
+[node name="HayHome" parent="Node2D" unique_id=303506440 instance=ExtResource("2")]
+position = Vector2(158, 44)
+
+[node name="Player" parent="Node2D" unique_id=1236533959 instance=ExtResource("3")]
+position = Vector2(39, 75)
+
+[node name="BarnScarecrow" parent="Node2D" unique_id=808625443 instance=ExtResource("4")]
+z_index = 1
+position = Vector2(158, 27)
+
+[node name="Sheep" parent="Node2D" unique_id=1801414735 instance=ExtResource("5")]
+position = Vector2(121, 113)
+
+[node name="BarnSides" parent="Node2D" unique_id=1217430252 instance=ExtResource("6")]
+z_index = 2
+position = Vector2(96, 86)
+texture = ExtResource("10")
+hframes = 24
+shadow_radius = 0
+
+[node name="BarnWall" parent="Node2D" unique_id=101413045 instance=ExtResource("6")]
+visible = false
+position = Vector2(96, 86)
+texture = ExtResource("7")
+hframes = 24
+shadow_radius = 0
+
+[node name="Shadow2" type="ColorRect" parent="Node2D" unique_id=277701410]
+offset_left = 14.0
+offset_top = 119.0
+offset_right = 178.0
+offset_bottom = 133.0
+color = Color(0.054902, 0.0901961, 0.290196, 0.207843)
+
+[node name="Shadow3" type="ColorRect" parent="Node2D" unique_id=1731226972]
+offset_left = 14.0
+offset_top = 31.0
+offset_right = 16.0
+offset_bottom = 133.0
+color = Color(0.054902, 0.0901961, 0.290196, 0.207843)
+
+[node name="Shadow4" type="ColorRect" parent="Node2D" unique_id=1650689010]
+offset_left = 176.0
+offset_top = 31.0
+offset_right = 178.0
+offset_bottom = 133.0
+color = Color(0.054902, 0.0901961, 0.290196, 0.207843)
+
+[node name="Shadow" type="ColorRect" parent="Node2D" unique_id=1536294035]
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 178.0
+offset_bottom = 36.0
+color = Color(0.054902, 0.0901961, 0.290196, 0.207843)
+
+[node name="Pillar3" parent="Node2D" unique_id=1805540009 instance=ExtResource("11")]
+position = Vector2(69, 126)
+starting_rotation = 135
+
+[node name="Pillar4" parent="Node2D" unique_id=1596171235 instance=ExtResource("11")]
+position = Vector2(135, 125)
+starting_rotation = 135
+
+[node name="Pillar5" parent="Node2D" unique_id=988582942 instance=ExtResource("11")]
+position = Vector2(104, 125)
+starting_rotation = 135
+
+[node name="Pillar6" parent="Node2D" unique_id=285133860 instance=ExtResource("11")]
+position = Vector2(167, 86)
+starting_rotation = 0
+
+[node name="Pillar7" parent="Node2D" unique_id=535956697 instance=ExtResource("11")]
+position = Vector2(135, 42)
+starting_rotation = 45
+
+[node name="Pillar8" parent="Node2D" unique_id=1069865006 instance=ExtResource("11")]
+position = Vector2(97, 42)
+starting_rotation = 45
+
+[node name="BarnChicken" parent="Node2D" unique_id=348746182 instance=ExtResource("12")]
+position = Vector2(116, 38)
+
+[node name="BarnOstrich" parent="Node2D" unique_id=450931631 instance=ExtResource("14")]
+position = Vector2(159, 74)
+
+[node name="BarnDodo" parent="Node2D" unique_id=506037813 instance=ExtResource("15")]
+position = Vector2(82, 113)
+
+[node name="FoundEgg" parent="Node2D" unique_id=54691079 instance=ExtResource("16")]
+z_index = 2
+position = Vector2(52, 106)
+
+[node name="BarnFrog" parent="Node2D" unique_id=78418323 instance=ExtResource("17")]
+position = Vector2(87, 42)
+
+[node name="Drone" parent="Node2D" unique_id=908105806 instance=ExtResource("18")]
+z_index = 2
+position = Vector2(44, 23)
+
+[node name="Barrel" parent="Node2D" unique_id=359757855 instance=ExtResource("19")]
+position = Vector2(25, 53)
+
+[node name="Barrel2" parent="Node2D" unique_id=1365015084 instance=ExtResource("19")]
+position = Vector2(24, 96)
+
+[node name="Barrel5" parent="Node2D" unique_id=1137673067 instance=ExtResource("19")]
+position = Vector2(37, 93)
+
+[node name="Barrel6" parent="Node2D" unique_id=1554542752 instance=ExtResource("19")]
+position = Vector2(42, 53)
+
+[node name="Barrel7" parent="Node2D" unique_id=1082926149 instance=ExtResource("19")]
+z_index = 1
+position = Vector2(33, 42)
+
+[node name="Barrel8" parent="Node2D" unique_id=1967602594 instance=ExtResource("19")]
+position = Vector2(134, 98)
+
+[node name="Wheat" parent="Node2D" unique_id=1294433406 instance=ExtResource("20")]
+position = Vector2(24, 82)
+
+[node name="Wheat2" parent="Node2D" unique_id=1444660089 instance=ExtResource("20")]
+position = Vector2(62, 52)
+
+[node name="Wheat9" parent="Node2D" unique_id=1639711952 instance=ExtResource("20")]
+position = Vector2(58, 80)
+
+[node name="Wheat10" parent="Node2D" unique_id=166697871 instance=ExtResource("20")]
+position = Vector2(112, 86)
+
+[node name="Wheat3" parent="Node2D" unique_id=2146659813 instance=ExtResource("20")]
+position = Vector2(64, 109)
+
+[node name="Wheat4" parent="Node2D" unique_id=1159649317 instance=ExtResource("20")]
+position = Vector2(100, 42)
+
+[node name="Wheat5" parent="Node2D" unique_id=1016703084 instance=ExtResource("20")]
+position = Vector2(101, 113)
+
+[node name="Wheat6" parent="Node2D" unique_id=1248876605 instance=ExtResource("20")]
+position = Vector2(35, 52)
+
+[node name="Wheat7" parent="Node2D" unique_id=1626437234 instance=ExtResource("20")]
+position = Vector2(132, 50)
+
+[node name="Wheat11" parent="Node2D" unique_id=375258163 instance=ExtResource("20")]
+position = Vector2(80, 67)
+
+[node name="Wheat12" parent="Node2D" unique_id=2133656812 instance=ExtResource("20")]
+position = Vector2(123, 65)
+
+[node name="Wheat13" parent="Node2D" unique_id=397121029 instance=ExtResource("20")]
+position = Vector2(86, 91)
+
+[node name="Wheat8" parent="Node2D" unique_id=795382473 instance=ExtResource("20")]
+position = Vector2(143, 80)
+
+[node name="CornStalk" parent="Node2D" unique_id=1298419908 instance=ExtResource("21")]
+position = Vector2(172, 66)
+
+[node name="CornStalk2" parent="Node2D" unique_id=684712965 instance=ExtResource("21")]
+position = Vector2(143, 61)
+
+[node name="CornStalk4" parent="Node2D" unique_id=1212134750 instance=ExtResource("21")]
+position = Vector2(141, 82)
+
+[node name="CornStalk3" parent="Node2D" unique_id=1878972109 instance=ExtResource("21")]
+position = Vector2(173, 80)
+
+[node name="Mushroom" parent="Node2D" unique_id=2121820661 instance=ExtResource("22")]
+position = Vector2(22, 73)
+
+[node name="Mushroom2" parent="Node2D" unique_id=1580126631 instance=ExtResource("22")]
+position = Vector2(96, 126)
+
+[node name="Mushroom3" parent="Node2D" unique_id=1274207666 instance=ExtResource("22")]
+position = Vector2(130, 39)
+
+[node name="Mushroom4" parent="Node2D" unique_id=53615861 instance=ExtResource("22")]
+position = Vector2(139, 125)
+
+[node name="Podium" parent="Node2D" unique_id=346281505 instance=ExtResource("23")]
+position = Vector2(101, 76)
+
+[node name="BarnBottom" parent="." unique_id=465818576 instance=ExtResource("6")]
+z_index = 2
+position = Vector2(96, 124)
+texture = ExtResource("8")
+hframes = 24
+shadow_radius = 0
+
+[node name="BarnTopReversed" parent="." unique_id=1824965536 instance=ExtResource("6")]
+visible = false
+modulate = Color(1, 1, 1, 0.364706)
+position = Vector2(96, 100)
+scale = Vector2(1, -1)
+texture = ExtResource("9")
+hframes = 24
+shadow_radius = 0
+
+[node name="OutsideBackground" type="ColorRect" parent="." unique_id=1540547964]
+offset_top = -7.0
+offset_right = 12.0
+offset_bottom = 149.0
+color = Color(0, 0, 0, 1)
+
+[node name="OutsideBackground2" type="ColorRect" parent="." unique_id=1810151317]
+offset_left = 180.0
+offset_top = -7.0
+offset_right = 192.0
+offset_bottom = 149.0
+color = Color(0, 0, 0, 1)
+
+[node name="OutsideBackground3" type="ColorRect" parent="." unique_id=2082803331]
+offset_left = -12.0
+offset_top = 135.0
+offset_right = 206.0
+offset_bottom = 156.0
+color = Color(0, 0, 0, 1)
+
+[node name="OutsideBackground4" type="ColorRect" parent="." unique_id=2066066572]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 206.0
+offset_bottom = 9.0
+color = Color(0, 0, 0, 1)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1754090839]
+position = Vector2(4, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1173996006]
+position = Vector2(0, 74.5)
+shape = SubResource("1")
+
+[node name="Wall2" type="StaticBody2D" parent="." unique_id=1198236087]
+position = Vector2(188, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=1563596968]
+position = Vector2(0, 74.5)
+shape = SubResource("1")
+
+[node name="Wall3" type="StaticBody2D" parent="." unique_id=1907980749]
+position = Vector2(84, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3" unique_id=1177467617]
+position = Vector2(1.5, 0)
+shape = SubResource("2")
+
+[node name="Wall4" type="StaticBody2D" parent="." unique_id=363606706]
+position = Vector2(84, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4" unique_id=2001050407]
+position = Vector2(1.5, 0)
+shape = SubResource("2")
+
+[node name="CreditsLayer" type="CanvasLayer" parent="." unique_id=76951997]
+layer = 2
+
+[node name="Paper" type="Sprite2D" parent="CreditsLayer" unique_id=1932251417]
+visible = false
+texture = ExtResource("25")
+centered = false
+
+[node name="Credits" type="Sprite2D" parent="CreditsLayer" unique_id=462756250]
+visible = false
+texture = ExtResource("24")
+centered = false

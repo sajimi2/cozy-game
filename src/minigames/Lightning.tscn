@@ -1,0 +1,111 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/minigames/Red_X.png" id="1"]
+[ext_resource type="Script" path="res://src/minigames/Lightning.gd" id="2"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.26971, 0.881818), 0.0, 0.0, 0, 0, Vector2(0.560166, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0.164773), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Animation" id="7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("X:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "spawn"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("X:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vl0i"]
+_data = {
+&"RESET": SubResource("7"),
+&"spawn": SubResource("6")
+}
+
+[sub_resource type="CircleShape2D" id="9"]
+radius = 5.09902
+
+[node name="Lightning" type="Node2D" unique_id=1228141148]
+script = ExtResource("2")
+
+[node name="X" type="AnimatedSprite2D" parent="." unique_id=1589281556]
+sprite_frames = SubResource("5")
+frame = 3
+
+[node name="Lightning" type="Line2D" parent="." unique_id=1866008361]
+visible = false
+z_index = 1
+z_as_relative = false
+width = 5.0
+width_curve = SubResource("8")
+default_color = Color(0.890196, 0.835294, 0.533333, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=303345925]
+libraries/ = SubResource("AnimationLibrary_4vl0i")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1617666223]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1859429751]
+shape = SubResource("9")
+disabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,0 +1,67 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/Spirit.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Spirit.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/spirit/Spirit_2.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/spirit/Spirit_1.png" id="5"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 4.0
+
+[sub_resource type="Animation" id="2"]
+resource_name = "move"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"set_frame"
+}, {
+"args": [1],
+"method": &"set_frame"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofdpy"]
+_data = {
+&"move": SubResource("2")
+}
+
+[node name="Spirit" type="Area2D" unique_id=1178398378]
+script = ExtResource("3")
+frames = [ExtResource("5"), ExtResource("4")]
+ghost_colors = [Color(1, 1, 1, 1)]
+
+[node name="StackedSprite" parent="." unique_id=543783723 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=253172474]
+shape = SubResource("1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=572677759]
+libraries/ = SubResource("AnimationLibrary_ofdpy")
+autoplay = &"move"
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=456321962]
+wait_time = 2.35
+one_shot = true
+autostart = true
+
+[node name="FollowPlayerTimer" type="Timer" parent="." unique_id=1824364405]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_Spirit_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="FollowPlayerTimer" to="." method="_on_FollowPlayerTimer_timeout"]

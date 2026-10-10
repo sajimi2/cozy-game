@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/FencePost.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 4.12311
+
+[node name="FencePost" type="StaticBody2D" unique_id=1643816611]
+
+[node name="StackedSprite" parent="." unique_id=1040758854 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 10
+shadow_radius = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477310127]
+shape = SubResource("1")

@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/Podium.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Podium.gd" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Authors.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Heart.png" id="5"]
+
+[node name="Podium" type="Node2D" unique_id=1463321604]
+script = ExtResource("3")
+symbols = [ExtResource("4"), ExtResource("5")]
+
+[node name="InteractableCreature" parent="." unique_id=1521932113 instance=ExtResource("1")]
+starting_rotation = 45
+hframes = 18
+texture = ExtResource("2")
+shadow_radius = 2
+arc_radius = 8
+arc_collision_radius = 12
+bubble_offset = Vector2(0, -28)
+
+[connection signal="exited" from="InteractableCreature" to="." method="_on_InteractableCreature_exited"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

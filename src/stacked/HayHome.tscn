@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/houses/HayHome.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 16.0
+
+[node name="HayHome" type="Node2D" unique_id=803318559]
+
+[node name="StackedSprite" parent="." unique_id=549065564 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 19
+shadow_radius = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1538025589]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=607549787]
+shape = SubResource("1")

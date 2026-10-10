@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Tree_1.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Tree.gd" id="3"]
+[ext_resource type="PackedScene" path="res://src/effects/LeafGenerator.tscn" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Tree_2.png" id="5"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Tree_3.png" id="6"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 5.0
+
+[node name="Tree" type="StaticBody2D" unique_id=1872699610]
+script = ExtResource("3")
+tree_sprites = [ExtResource("5"), ExtResource("2"), ExtResource("6")]
+
+[node name="StackedSprite" parent="." unique_id=944185321 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 20
+stack_offset = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1600686504]
+shape = SubResource("1")
+
+[node name="LeafGenerator" parent="." unique_id=1860580592 instance=ExtResource("4")]
+position = Vector2(0, -23)

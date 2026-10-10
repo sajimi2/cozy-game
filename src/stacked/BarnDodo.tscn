@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/BarnDodo.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/player/Dodo.png" id="6"]
+
+[node name="BarnDodo" type="Node2D" unique_id=1688870776]
+script = ExtResource("2")
+
+[node name="InteractableCreature" parent="." unique_id=66725132 instance=ExtResource("1")]
+starting_rotation = -15
+hframes = 16
+texture = ExtResource("6")
+shadow_radius = 7
+arc_radius = 11
+arc_collision_radius = 20
+bubble_offset = Vector2(0, -24)
+
+[connection signal="exited" from="InteractableCreature" to="." method="_on_InteractableCreature_exited"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/etc/A.png" id="2"]
+[ext_resource type="Script" path="res://src/ui/A.gd" id="3"]
+
+[node name="A" type="Node2D" unique_id=325997030]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=271633187 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 5
+shadow_radius = 2

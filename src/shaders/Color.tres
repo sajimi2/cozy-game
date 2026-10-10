@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cjpp4ycmp4dl0"]
+
+[sub_resource type="Shader" id="1"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR.a > 0.0) {
+		COLOR = color;
+	}
+}"
+
+[resource]
+shader = SubResource("1")
+shader_parameter/color = Color(0, 0, 0, 0.207843)

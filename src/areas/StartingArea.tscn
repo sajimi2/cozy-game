@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://cr1bas8etnbxw"]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableSign.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bqymegcw8bi8d" path="res://sprites/starting_area/GrassifiedPath.png" id="2"]
+[ext_resource type="PackedScene" path="res://src/stacked/Tree.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://src/stacked/Stump.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://src/stacked/Bush.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://src/stacked/Egg.tscn" id="6"]
+[ext_resource type="Script" uid="uid://ckonce08b2rs7" path="res://src/areas/StartingArea.gd" id="7"]
+[ext_resource type="PackedScene" path="res://src/stacked/Rock.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://src/effects/Fence.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://src/stacked/RoundBush.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://src/stacked/Log.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://src/stacked/Mushroom.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://src/stacked/Wheat.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://src/player/Player.tscn" id="17"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(211, 20)
+
+[node name="StartingArea" type="Node2D" unique_id=1457197046]
+script = ExtResource("7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=860076623]
+show_behind_parent = true
+offset_top = -144.0
+offset_right = 192.0
+offset_bottom = 144.0
+color = Color(0.741176, 0.576471, 0.32549, 1)
+
+[node name="Dirt" type="Sprite2D" parent="." unique_id=2042441686]
+position = Vector2(96, 0)
+texture = ExtResource("2")
+
+[node name="ToMainArea" type="Area2D" parent="." unique_id=193016202]
+position = Vector2(0, -151)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToMainArea" unique_id=985483802]
+position = Vector2(95, -1)
+shape = SubResource("1")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=620348824]
+
+[node name="Player" parent="Node2D" unique_id=76901776 instance=ExtResource("17")]
+position = Vector2(96, 81)
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/Player" unique_id=1477820979]
+limit_left = 0
+limit_top = -144
+limit_right = 192
+limit_bottom = 144
+
+[node name="Fence" parent="Node2D" unique_id=927504098 instance=ExtResource("9")]
+points = PackedVector2Array(5, -151, 10, -132, 6, -111, 11, -95, 6, -76, 12, -57, 5, -36, 11, -17, 6, 5, 9, 27, 13, 59, 5, 77, 13, 98, 5, 115, 13, 137, 45, 139, 71, 130, 101, 136, 134, 132, 175, 138, 184, 124, 175, 99, 182, 70, 172, 49, 185, 40, 184, 13, 176, -4, 188, -22, 182, -47, 188, -69, 178, -94, 185, -106, 179, -126, 183, -152)
+
+[node name="Tree" parent="Node2D" unique_id=1705779779 instance=ExtResource("3")]
+position = Vector2(63, 104)
+
+[node name="Tree13" parent="Node2D" unique_id=1005549059 instance=ExtResource("3")]
+position = Vector2(133, -56)
+
+[node name="Tree14" parent="Node2D" unique_id=134042683 instance=ExtResource("3")]
+position = Vector2(137, -3)
+
+[node name="Tree2" parent="Node2D" unique_id=1028139387 instance=ExtResource("3")]
+position = Vector2(128, 40)
+
+[node name="Tree6" parent="Node2D" unique_id=1680596033 instance=ExtResource("3")]
+position = Vector2(162, -101)
+
+[node name="Tree3" parent="Node2D" unique_id=922079879 instance=ExtResource("3")]
+position = Vector2(31, 89)
+
+[node name="Tree4" parent="Node2D" unique_id=1570397210 instance=ExtResource("3")]
+position = Vector2(157, 96)
+
+[node name="Tree5" parent="Node2D" unique_id=2094851803 instance=ExtResource("3")]
+position = Vector2(119, 119)
+
+[node name="Tree7" parent="Node2D" unique_id=345406968 instance=ExtResource("3")]
+position = Vector2(25, -24)
+
+[node name="Tree8" parent="Node2D" unique_id=1508858159 instance=ExtResource("3")]
+position = Vector2(70, -96)
+
+[node name="Tree9" parent="Node2D" unique_id=1258128916 instance=ExtResource("3")]
+position = Vector2(60, 41)
+
+[node name="Tree10" parent="Node2D" unique_id=330448338 instance=ExtResource("3")]
+position = Vector2(171, -15)
+
+[node name="Tree11" parent="Node2D" unique_id=752064564 instance=ExtResource("3")]
+position = Vector2(27, -99)
+
+[node name="Tree12" parent="Node2D" unique_id=1345734239 instance=ExtResource("3")]
+position = Vector2(24, 23)
+
+[node name="Stump" parent="Node2D" unique_id=1331606565 instance=ExtResource("4")]
+position = Vector2(136, 81)
+
+[node name="Stump4" parent="Node2D" unique_id=1960998685 instance=ExtResource("4")]
+position = Vector2(51, -94)
+
+[node name="Stump2" parent="Node2D" unique_id=2020596709 instance=ExtResource("4")]
+position = Vector2(119, -40)
+
+[node name="Stump3" parent="Node2D" unique_id=1947078915 instance=ExtResource("4")]
+position = Vector2(141, -108)
+
+[node name="Bush" parent="Node2D" unique_id=247435091 instance=ExtResource("5")]
+position = Vector2(34, 116)
+
+[node name="Bush5" parent="Node2D" unique_id=262515196 instance=ExtResource("5")]
+position = Vector2(47, -67)
+
+[node name="Bush2" parent="Node2D" unique_id=528309048 instance=ExtResource("5")]
+position = Vector2(163, 24)
+
+[node name="Rock" parent="Node2D" unique_id=1668930803 instance=ExtResource("8")]
+position = Vector2(159, 121)
+
+[node name="Rock2" parent="Node2D" unique_id=226087503 instance=ExtResource("8")]
+position = Vector2(20, -76)
+
+[node name="Rock3" parent="Node2D" unique_id=1580652182 instance=ExtResource("8")]
+position = Vector2(150, -50)
+
+[node name="Rock4" parent="Node2D" unique_id=944784701 instance=ExtResource("8")]
+position = Vector2(44, 1)
+
+[node name="RoundBush" parent="Node2D" unique_id=1885592520 instance=ExtResource("10")]
+position = Vector2(163, -74)
+
+[node name="Log2" parent="Node2D" unique_id=716648125 instance=ExtResource("11")]
+position = Vector2(41, 59)
+angle = 20.0
+
+[node name="Log4" parent="Node2D" unique_id=378642160 instance=ExtResource("11")]
+position = Vector2(139, 61)
+angle = -30.0
+
+[node name="Mushroom" parent="Node2D" unique_id=1745690137 instance=ExtResource("12")]
+position = Vector2(86, 122)
+
+[node name="Mushroom2" parent="Node2D" unique_id=318553421 instance=ExtResource("12")]
+position = Vector2(140, 103)
+
+[node name="Mushroom3" parent="Node2D" unique_id=400020909 instance=ExtResource("12")]
+position = Vector2(152, -27)
+
+[node name="Mushroom5" parent="Node2D" unique_id=1354823053 instance=ExtResource("12")]
+position = Vector2(48, -117)
+
+[node name="Mushroom4" parent="Node2D" unique_id=1491359201 instance=ExtResource("12")]
+position = Vector2(41, 37)
+
+[node name="Wheat" parent="Node2D" unique_id=806127786 instance=ExtResource("13")]
+position = Vector2(57, 119)
+
+[node name="Wheat2" parent="Node2D" unique_id=1758613007 instance=ExtResource("13")]
+position = Vector2(139, 116)
+
+[node name="Wheat3" parent="Node2D" unique_id=1649095078 instance=ExtResource("13")]
+position = Vector2(168, 69)
+
+[node name="Wheat4" parent="Node2D" unique_id=1188663360 instance=ExtResource("13")]
+position = Vector2(20, -130)
+
+[node name="Wheat5" parent="Node2D" unique_id=1027131265 instance=ExtResource("13")]
+position = Vector2(147, -94)
+
+[node name="Wheat12" parent="Node2D" unique_id=27019839 instance=ExtResource("13")]
+position = Vector2(148, -125)
+
+[node name="Wheat13" parent="Node2D" unique_id=1886006347 instance=ExtResource("13")]
+position = Vector2(60, -130)
+
+[node name="Wheat6" parent="Node2D" unique_id=468041849 instance=ExtResource("13")]
+position = Vector2(41, -44)
+
+[node name="Wheat7" parent="Node2D" unique_id=46928129 instance=ExtResource("13")]
+position = Vector2(33, -86)
+
+[node name="Wheat11" parent="Node2D" unique_id=1285210934 instance=ExtResource("13")]
+position = Vector2(170, -55)
+
+[node name="Wheat8" parent="Node2D" unique_id=119311964 instance=ExtResource("13")]
+position = Vector2(20, 36)
+
+[node name="Wheat9" parent="Node2D" unique_id=1468372940 instance=ExtResource("13")]
+position = Vector2(17, 75)
+
+[node name="Wheat10" parent="Node2D" unique_id=1821304140 instance=ExtResource("13")]
+position = Vector2(142, 14)
+
+[node name="InteractableSign" parent="Node2D" unique_id=93878470 instance=ExtResource("1")]
+position = Vector2(60, -16)
+
+[node name="Egg" parent="Node2D" unique_id=1574515132 instance=ExtResource("6")]
+position = Vector2(157, -4)
+
+[node name="DirtPath" type="Polygon2D" parent="." unique_id=1005087351]
+visible = false
+position = Vector2(6, 0)
+color = Color(0.631373, 0.494118, 0.403922, 1)
+polygon = PackedVector2Array(87, -147, 87, -142, 90, -136, 92, -131, 93, -126, 91, -118, 92, -112, 91, -103, 88, -94, 87, -85, 85, -77, 81, -69, 76, -63, 70, -54, 69, -48, 71, -41, 71, -35, 73, -28, 77, -22, 79, -11, 80, -4, 83, 3, 83, 10, 83, 18, 81, 25, 79, 35, 80, 44, 83, 51, 83, 57, 85, 62, 88, 67, 91, 61, 93, 56, 91, 49, 88, 41, 87, 36, 88, 29, 91, 23, 93, 16, 92, 5, 88, -2, 89, -9, 89, -17, 87, -24, 83, -30, 82, -38, 81, -46, 84, -56, 91, -64, 96, -73, 100, -82, 102, -88, 101, -92, 104, -98, 103, -109, 107, -117, 107, -129, 104, -138, 105, -142, 104, -146, 99, -148, 95, -146)
+
+[connection signal="body_entered" from="ToMainArea" to="." method="_on_ToMainArea_body_entered"]

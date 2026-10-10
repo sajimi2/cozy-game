@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/BarnOstrich.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Ostrich.png" id="5"]
+
+[node name="BarnOstrich" type="Node2D" unique_id=1401637805]
+script = ExtResource("2")
+
+[node name="InteractableCreature" parent="." unique_id=1436052129 instance=ExtResource("1")]
+starting_rotation = -110
+hframes = 22
+texture = ExtResource("5")
+arc_radius = 12
+arc_collision_radius = 18
+bubble_offset = Vector2(0, -26)
+
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

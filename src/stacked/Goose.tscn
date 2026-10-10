@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/player/Chicken.png" id="2"]
+
+[node name="Goose" type="Node2D" unique_id=994769263]
+
+[node name="StackedSprite" parent="." unique_id=167017440 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 16
+show_sprite_rotation = true

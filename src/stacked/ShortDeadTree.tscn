@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/ShortDeadTree.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/DeadTree.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 2.23607
+
+[node name="DeadTree" type="Node2D" unique_id=683466794]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=759103586 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 24
+shadow_radius = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1435713924]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1989855301]
+shape = SubResource("1")

@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Well.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 14.0
+
+[node name="Well" type="Node2D" unique_id=1073988187]
+
+[node name="StackedSprite" parent="." unique_id=954379936 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 12
+shadow_radius = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=990835703]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=656020617]
+shape = SubResource("1")

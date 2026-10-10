@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://sprites/effects/Rain.png" id="1"]
+
+[node name="Rain" type="CPUParticles2D" unique_id=803406533]
+self_modulate = Color(1, 1, 1, 0.345098)
+position = Vector2(193, -16)
+amount = 150
+texture = ExtResource("1")
+lifetime = 2.0
+lifetime_randomness = 0.1
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(-80, 80)

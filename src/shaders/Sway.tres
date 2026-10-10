@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[sub_resource type="Shader" id="1"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform float weight = 1.0;
+
+void vertex() {
+	VERTEX.x += weight * sin(TIME);
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource("1")
+shader_parameter/weight = 1.0

@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/Wheat.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://src/stacked/DeadTree.tscn" id="6"]
+
+[node name="Trees" type="Node2D" unique_id=455661761]
+
+[node name="Background" type="ColorRect" parent="." unique_id=1091917030]
+offset_right = 192.0
+offset_bottom = 144.0
+color = Color(0.741176, 0.576471, 0.32549, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=901961814]
+
+[node name="Wheat" parent="Node2D" unique_id=1333966617 instance=ExtResource("3")]
+position = Vector2(94, 22)
+
+[node name="Wheat2" parent="Node2D" unique_id=930435805 instance=ExtResource("3")]
+position = Vector2(45, 52)
+
+[node name="Wheat3" parent="Node2D" unique_id=2047617884 instance=ExtResource("3")]
+position = Vector2(27, 74)
+
+[node name="Wheat11" parent="Node2D" unique_id=291119780 instance=ExtResource("3")]
+position = Vector2(34, 131)
+
+[node name="Wheat12" parent="Node2D" unique_id=824781499 instance=ExtResource("3")]
+position = Vector2(156, 127)
+
+[node name="Wheat13" parent="Node2D" unique_id=1182809175 instance=ExtResource("3")]
+position = Vector2(137, 18)
+
+[node name="Wheat4" parent="Node2D" unique_id=478054841 instance=ExtResource("3")]
+position = Vector2(113, 131)
+
+[node name="Wheat5" parent="Node2D" unique_id=1784566231 instance=ExtResource("3")]
+position = Vector2(116, 78)
+
+[node name="Wheat6" parent="Node2D" unique_id=2006527579 instance=ExtResource("3")]
+position = Vector2(143, 53)
+
+[node name="Wheat10" parent="Node2D" unique_id=434580674 instance=ExtResource("3")]
+position = Vector2(15, 20)
+
+[node name="Wheat7" parent="Node2D" unique_id=780025205 instance=ExtResource("3")]
+position = Vector2(176, 24)
+
+[node name="Wheat8" parent="Node2D" unique_id=2024116984 instance=ExtResource("3")]
+position = Vector2(180, 100)
+
+[node name="Wheat9" parent="Node2D" unique_id=1590561961 instance=ExtResource("3")]
+position = Vector2(12, 101)
+
+[node name="DeadTree" parent="Node2D" unique_id=1206020483 instance=ExtResource("6")]
+position = Vector2(90, 71)
+
+[node name="DeadTree2" parent="Node2D" unique_id=433702393 instance=ExtResource("6")]
+position = Vector2(67, 112)
+
+[node name="DeadTree3" parent="Node2D" unique_id=2104145150 instance=ExtResource("6")]
+position = Vector2(154, 104)

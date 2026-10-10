@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/effects/Fence.gd" id="1"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4qvud"]
+resource_local_to_scene = true
+b = Vector2(0, 0)
+
+[node name="Fence" type="Line2D" unique_id=1970982563]
+points = PackedVector2Array(7, 17, 17, 67, 32, 103, 79, 116, 129, 114, 150, 76, 169, 34, 136, 15, 82, 14, 7, 17)
+width = 1.0
+script = ExtResource("1")
+
+[node name="CopyLine" type="Line2D" parent="." unique_id=269116034]
+width = 2.0
+default_color = Color(0.478431, 0.333333, 0.313726, 1)
+round_precision = 15
+
+[node name="Walls" type="Node2D" parent="." unique_id=478338956]
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=11731062]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=395714836]
+shape = SubResource("SegmentShape2D_4qvud")

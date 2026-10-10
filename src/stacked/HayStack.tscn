@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/HayStack.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/HayStack.gd" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 20)
+
+[node name="HayStack" type="Node2D" unique_id=1683203534]
+script = ExtResource("3")
+
+[node name="StackedSprite" parent="." unique_id=1059303577 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 9
+shadow_radius = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2144719625]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=543502294]
+shape = SubResource("1")

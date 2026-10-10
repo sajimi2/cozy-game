@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Bear.png" id="2"]
+
+[node name="Bear" type="Node2D" unique_id=567390832]
+
+[node name="StackedSprite" parent="." unique_id=933776797 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 20
+show_sprite_rotation = true

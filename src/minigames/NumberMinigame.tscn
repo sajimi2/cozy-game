@@ -1,0 +1,321 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://src/shaders/HSV.tres" id="1"]
+[ext_resource type="Script" path="res://src/minigames/NumberMinigame.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/ui/rps/Question.png" id="3"]
+[ext_resource type="Texture2D" path="res://sprites/ui/rps/PointingHand.png" id="6"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_0.png" id="7"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_1.png" id="8"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_2.png" id="9"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_3.png" id="10"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_4.png" id="11"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_5.png" id="12"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_6.png" id="13"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_7.png" id="14"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_8.png" id="15"]
+[ext_resource type="Texture2D" path="res://sprites/minigames/numbers/Number_9.png" id="16"]
+
+[sub_resource type="Shader" id="4"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0, 1);
+
+uniform float diamondPixelSize = 2.0f;
+
+void fragment() {
+	float xFraction = fract(FRAGCOORD.x / diamondPixelSize);
+	float yFraction = fract(FRAGCOORD.y / diamondPixelSize);
+	if (xFraction + yFraction > progress * 2.0) {
+		discard;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mme5f"]
+resource_local_to_scene = true
+shader = SubResource("4")
+shader_parameter/progress = 1.0
+shader_parameter/diamondPixelSize = 2.0
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource("3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource("3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("20")
+}, {
+"duration": 1.0,
+"texture": SubResource("21")
+}, {
+"duration": 1.0,
+"texture": SubResource("22")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Shader" id="17"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR.a > 0.0) {
+		COLOR = color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="24"]
+shader = SubResource("17")
+shader_parameter/color = Color(0.121569, 0.0941176, 0.2, 0.588235)
+
+[sub_resource type="Shader" id="Shader_opv6p"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0, 1);
+
+uniform float diamondPixelSize = 2.0f;
+
+void fragment() {
+	float xFraction = fract(FRAGCOORD.x / diamondPixelSize);
+	float yFraction = fract(FRAGCOORD.y / diamondPixelSize);
+	if (xFraction + yFraction > progress * 2.0) {
+		discard;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pn2fq"]
+resource_local_to_scene = true
+shader = SubResource("Shader_opv6p")
+shader_parameter/progress = 1.0
+shader_parameter/diamondPixelSize = 2.0
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}, {
+"duration": 1.0,
+"texture": SubResource("15")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Shader" id="26"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR.a > 0.0) {
+		COLOR = color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="27"]
+shader = SubResource("26")
+shader_parameter/color = Color(0.121569, 0.0941176, 0.2, 0.588235)
+
+[node name="NumberMinigame" type="CanvasLayer" unique_id=1333821330]
+process_mode = 3
+script = ExtResource("2")
+
+[node name="Shader" type="ColorRect" parent="." unique_id=176236051]
+material = ExtResource("1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1365795533]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.231373)
+
+[node name="Question" type="AnimatedSprite2D" parent="." unique_id=482366806]
+material = SubResource("ShaderMaterial_mme5f")
+position = Vector2(96, 28)
+sprite_frames = SubResource("23")
+frame = 1
+
+[node name="Shadow" type="AnimatedSprite2D" parent="Question" unique_id=683272687]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+material = SubResource("24")
+use_parent_material = true
+sprite_frames = SubResource("23")
+offset = Vector2(1, 1)
+
+[node name="Hand" type="AnimatedSprite2D" parent="." unique_id=424074990]
+material = SubResource("ShaderMaterial_pn2fq")
+position = Vector2(57, 55)
+sprite_frames = SubResource("25")
+frame = 1
+
+[node name="Shadow" type="AnimatedSprite2D" parent="Hand" unique_id=2075761879]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+material = SubResource("27")
+use_parent_material = true
+sprite_frames = SubResource("25")
+frame = 1
+offset = Vector2(1, 1)
+
+[node name="Number_0" type="Sprite2D" parent="." unique_id=1564283882]
+position = Vector2(57, 77)
+texture = ExtResource("7")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_0" unique_id=1688210433]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("7")
+hframes = 3
+
+[node name="Number_1" type="Sprite2D" parent="." unique_id=1742383241]
+position = Vector2(82, 77)
+texture = ExtResource("8")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_1" unique_id=1738860230]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("8")
+hframes = 3
+
+[node name="Number_2" type="Sprite2D" parent="." unique_id=1896118154]
+position = Vector2(107, 77)
+texture = ExtResource("9")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_2" unique_id=596865829]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("9")
+hframes = 3
+
+[node name="Number_3" type="Sprite2D" parent="." unique_id=1298747021]
+position = Vector2(132, 77)
+texture = ExtResource("10")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_3" unique_id=1132106086]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("10")
+hframes = 3
+
+[node name="Number_4" type="Sprite2D" parent="." unique_id=262414413]
+position = Vector2(157, 77)
+texture = ExtResource("11")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_4" unique_id=2110259781]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("11")
+hframes = 3
+
+[node name="Number_5" type="Sprite2D" parent="." unique_id=1779299762]
+position = Vector2(37, 118)
+texture = ExtResource("12")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_5" unique_id=164390798]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("12")
+hframes = 3
+
+[node name="Number_6" type="Sprite2D" parent="." unique_id=450201033]
+position = Vector2(64, 116)
+texture = ExtResource("13")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_6" unique_id=1778754911]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("13")
+hframes = 3
+
+[node name="Number_7" type="Sprite2D" parent="." unique_id=2141134055]
+position = Vector2(89, 116)
+texture = ExtResource("14")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_7" unique_id=1854356461]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("14")
+hframes = 3
+
+[node name="Number_8" type="Sprite2D" parent="." unique_id=717374301]
+position = Vector2(115, 116)
+texture = ExtResource("15")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_8" unique_id=1778514434]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("15")
+hframes = 3
+
+[node name="Number_9" type="Sprite2D" parent="." unique_id=1026750758]
+position = Vector2(143, 117)
+texture = ExtResource("16")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="Number_9" unique_id=1513448036]
+self_modulate = Color(0.109804, 0.027451, 0.101961, 1)
+show_behind_parent = true
+position = Vector2(1, 1)
+texture = ExtResource("16")
+hframes = 3
+
+[node name="InputLagTimer" type="Timer" parent="." unique_id=467408200]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="frame_changed" from="Hand" to="." method="_on_Hand_frame_changed"]
+[connection signal="timeout" from="InputLagTimer" to="." method="_on_InputLagTimer_timeout"]

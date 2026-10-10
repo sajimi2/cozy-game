@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/CornStalk.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Corn.png" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 2.0
+
+[node name="CornStalk" type="Node2D" unique_id=897489240]
+script = ExtResource("2")
+
+[node name="StackedSprite" parent="." unique_id=1283546522 instance=ExtResource("1")]
+rotation = 0.0117341
+texture = ExtResource("3")
+hframes = 16
+shadow_radius = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=544707950]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=314300485]
+shape = SubResource("1")
+disabled = true

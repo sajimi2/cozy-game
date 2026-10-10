@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
+[ext_resource type="Script" path="res://src/stacked/BarnChicken.gd" id="2"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/WhiteChicken.png" id="3"]
+
+[node name="BarnChicken" type="Node2D" unique_id=440579450]
+position = Vector2(-1, 0)
+script = ExtResource("2")
+
+[node name="InteractableCreature" parent="." unique_id=367534906 instance=ExtResource("1")]
+starting_rotation = 225
+texture = ExtResource("3")
+shadow_radius = 7
+arc_collision_radius = 20
+collision_radius = 7
+bubble_offset = Vector2(0, -23)
+
+[connection signal="exited" from="InteractableCreature" to="." method="_on_InteractableCreature_exited"]
+[connection signal="interacted" from="InteractableCreature" to="." method="_on_InteractableCreature_interacted"]

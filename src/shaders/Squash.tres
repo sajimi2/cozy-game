@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[sub_resource type="Shader" id="2"]
+code = "shader_type canvas_item;
+
+uniform float angle = 30.0;
+uniform float rotation = 0.0;
+
+void vertex() {
+	VERTEX.y *= sin(radians(angle + (rotation - 30.0)));
+	VERTEX.x *= cos(radians(rotation - 30.0));
+}"
+
+[resource]
+shader = SubResource("2")
+shader_parameter/angle = 30.0
+shader_parameter/rotation = 60.0

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
+[ext_resource type="Texture2D" path="res://sprites/stacked/Barrel.png" id="2"]
+[ext_resource type="Script" path="res://src/stacked/Barrel.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 7.07107
+
+[node name="Barrel" type="Node2D" unique_id=1405708257]
+script = ExtResource("3")
+starting_rotation = 45
+
+[node name="StackedSprite" parent="." unique_id=196172114 instance=ExtResource("1")]
+texture = ExtResource("2")
+hframes = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=773344702]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=481266442]
+shape = SubResource("1")
