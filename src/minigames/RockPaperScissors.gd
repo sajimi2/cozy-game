@@ -178,6 +178,9 @@ func show_selections():
 	for i in range(0, 7):
 		icon_ref.visible = !icon_ref.visible
 		await get_tree().create_timer(.085).timeout
+	# 小鸡赢下一局时，它的头像开心地跳两下
+	if did_enemy_win:
+		hop(icon_ref)
 	await get_tree().create_timer(1.0).timeout
 	
 	if did_player_win():
@@ -217,6 +220,13 @@ func show_selections():
 		queue_free()
 	else:
 		reset_board()
+
+func hop(icon):
+	var base_y = icon.position.y
+	var tween = create_tween()
+	for i in 2:
+		tween.tween_property(icon, "position:y", base_y - 3, 0.09).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(icon, "position:y", base_y, 0.09).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 
 func did_player_win():
 	var player_won_count = 0

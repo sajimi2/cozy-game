@@ -23,14 +23,19 @@ func _on_InteractableCreature_entered():
 func _on_InteractableCreature_interacted(body):
 	if Globals.has_completed_sheep:
 		return
+	# 失败后按 Z 只换一个新数字并亮出来，再按一次才开始，免得新数字一闪而过。
 	if $InteractableCreature.symbol == symbols[11]:
 		randomize()
 		number = randi() % 10
 		$InteractableCreature.symbol = symbols[number]
+		AudioManager.play_sfx("QuestionMarkAppears")
+		return
 	await get_tree().create_timer(0.25).timeout
 	var minigame = NumberMinigame.instantiate()
 	add_child(minigame)
 	minigame.enemy_number = number
+	minigame.clue_symbol = symbols[number]
+	minigame.hint_level = Globals.sheep_misses + 1
 	minigame.connect("won", Callable(self, "_on_Minigame_player_won"))
 	minigame.connect("lost", Callable(self, "_on_Minigame_player_lost"))
 	minigame.connect("canceled", Callable(self, "_on_Minigame_player_canceled"))
@@ -47,6 +52,7 @@ func _on_Minigame_player_lost():
 	$InteractableCreature.symbol = symbols[11]
 	AudioManager.play_sfx("FailedMinigame")
 	AudioManager.play_sfx("SadFaceAppears")
+	Globals.sheep_misses += 1
 
 func _on_Minigame_player_canceled():
 	AudioManager.play_main_music()
