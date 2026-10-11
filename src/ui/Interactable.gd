@@ -87,5 +87,39 @@ func _on_Area2D_body_exited(body):
 		$Label.text = ""
 		queue_redraw()
 
+# 换一张气泡底图（四帧横排），用于装下比 8x8 更大的符号；传 null 换回原来的气泡。
+# symbol_frames 是符号的帧数，可以是气泡帧数的整数倍，符号会跟着气泡一圈圈往后播。
+var default_bubble_frames = null
+var bubble_loops = 0
+
+func set_bubble_texture(texture, symbol_frames = 4, symbol_offset_y = -2):
+	$Bubble/Symbol.hframes = symbol_frames
+	$Bubble/Symbol.frame = 0
+	bubble_loops = 0
+	if default_bubble_frames == null:
+		default_bubble_frames = $Bubble.sprite_frames
+	if texture == null:
+		$Bubble.sprite_frames = default_bubble_frames
+		$Bubble/Symbol.position.y = 0
+		$Bubble.position = bubble_offset
+		return
+	var frames = SpriteFrames.new()
+	frames.set_animation_speed("default", default_bubble_frames.get_animation_speed("default"))
+	var frame_width = texture.get_width() / 4
+	for i in 4:
+		var region = AtlasTexture.new()
+		region.atlas = texture
+		region.region = Rect2(i * frame_width, 0, frame_width, texture.get_height())
+		frames.add_frame("default", region)
+	$Bubble.sprite_frames = frames
+	$Bubble.play("default")
+	# 气泡变高后往上抬，底部尾巴仍停在原来的位置，不压住角色的头
+	$Bubble.position = bubble_offset - Vector2(0, (texture.get_height() - 16) / 2.0)
+	# 加大气泡的尾巴占了下面几行，符号略微上移才在气泡里居中。
+	$Bubble/Symbol.position.y = symbol_offset_y
+
 func _on_Bubble_frame_changed():
-	$Bubble/Symbol.frame = $Bubble.frame
+	if $Bubble.frame == 0:
+		bubble_loops += 1
+	var bubble_frames = $Bubble.sprite_frames.get_frame_count("default")
+	$Bubble/Symbol.frame = ($Bubble.frame + bubble_loops * bubble_frames) % $Bubble/Symbol.hframes

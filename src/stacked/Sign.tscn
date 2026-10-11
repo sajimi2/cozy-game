@@ -15,6 +15,7 @@ script = ExtResource("3")
 shape = SubResource("1")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1564614532]
+y_sort_enabled = true
 
 [node name="StackedSprite" parent="Node2D" unique_id=1439481271 instance=ExtResource("2")]
 texture = ExtResource("1")

@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" path="res://src/stacked/Mushroom.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://src/stacked/Wheat.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://src/player/Player.tscn" id="17"]
+[ext_resource type="Script" path="res://src/effects/FlowerScatter.gd" id="flower_scatter"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(211, 20)
@@ -26,7 +27,7 @@ show_behind_parent = true
 offset_top = -144.0
 offset_right = 192.0
 offset_bottom = 144.0
-color = Color(0.741176, 0.576471, 0.32549, 1)
+color = Color(0.525490, 0.690196, 0.376471, 1)
 
 [node name="Dirt" type="Sprite2D" parent="." unique_id=2042441686]
 position = Vector2(96, 0)
@@ -39,7 +40,13 @@ position = Vector2(0, -151)
 position = Vector2(95, -1)
 shape = SubResource("1")
 
+[node name="FlowerScatter" type="Node2D" parent="."]
+script = ExtResource("flower_scatter")
+area = Rect2(0, -144, 192, 288)
+avoid = Array[NodePath]([NodePath("../Dirt"), NodePath("../DirtPath")])
+
 [node name="Node2D" type="Node2D" parent="." unique_id=620348824]
+y_sort_enabled = true
 
 [node name="Player" parent="Node2D" unique_id=76901776 instance=ExtResource("17")]
 position = Vector2(96, 81)
@@ -202,7 +209,7 @@ position = Vector2(157, -4)
 [node name="DirtPath" type="Polygon2D" parent="." unique_id=1005087351]
 visible = false
 position = Vector2(6, 0)
-color = Color(0.631373, 0.494118, 0.403922, 1)
+color = Color(0.752941, 0.666667, 0.478431, 1)
 polygon = PackedVector2Array(87, -147, 87, -142, 90, -136, 92, -131, 93, -126, 91, -118, 92, -112, 91, -103, 88, -94, 87, -85, 85, -77, 81, -69, 76, -63, 70, -54, 69, -48, 71, -41, 71, -35, 73, -28, 77, -22, 79, -11, 80, -4, 83, 3, 83, 10, 83, 18, 81, 25, 79, 35, 80, 44, 83, 51, 83, 57, 85, 62, 88, 67, 91, 61, 93, 56, 91, 49, 88, 41, 87, 36, 88, 29, 91, 23, 93, 16, 92, 5, 88, -2, 89, -9, 89, -17, 87, -24, 83, -30, 82, -38, 81, -46, 84, -56, 91, -64, 96, -73, 100, -82, 102, -88, 101, -92, 104, -98, 103, -109, 107, -117, 107, -129, 104, -138, 105, -142, 104, -146, 99, -148, 95, -146)
 
 [connection signal="body_entered" from="ToMainArea" to="." method="_on_ToMainArea_body_entered"]

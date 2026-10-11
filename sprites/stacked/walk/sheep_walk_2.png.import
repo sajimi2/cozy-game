@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b56ybehp2w3tf"
-path="res://.godot/imported/Mushroom_1.png-2e6e6c08553f262a6a587412fc50e3b0.ctex"
+uid="uid://cgmk6gok3knw2"
+path="res://.godot/imported/sheep_walk_2.png-cd7fcf006d0396f7a5b2e1201672cced.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/stacked/Mushroom_1.png"
-dest_files=["res://.godot/imported/Mushroom_1.png-2e6e6c08553f262a6a587412fc50e3b0.ctex"]
+source_file="res://sprites/stacked/walk/sheep_walk_2.png"
+dest_files=["res://.godot/imported/sheep_walk_2.png-cd7fcf006d0396f7a5b2e1201672cced.ctex"]
 
 [params]
 

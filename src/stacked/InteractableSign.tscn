@@ -3,12 +3,14 @@
 [ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
 [ext_resource type="Texture2D" path="res://sprites/stacked/Sign.png" id="2"]
 [ext_resource type="Script" path="res://src/stacked/InteractableSign.gd" id="3"]
-[ext_resource type="Texture2D" path="res://sprites/ui/symbols/ButtonPress.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/ui/symbols/KeyPress.png" id="4"]
+[ext_resource type="Texture2D" path="res://sprites/ui/ChatBubbleWide.png" id="6"]
 [ext_resource type="Texture2D" path="res://sprites/ui/symbols/Heart.png" id="5"]
 
 [node name="InteractableSign" type="Node2D" unique_id=1377880112]
 script = ExtResource("3")
 symbols = [ExtResource("4"), ExtResource("5")]
+wide_bubble = ExtResource("6")
 
 [node name="InteractableCreature" parent="." unique_id=1537126328 instance=ExtResource("1")]
 starting_rotation = -10

@@ -3,6 +3,9 @@ extends Node2D
 @export var symbols = [] # (Array, Texture2D)
 
 func _ready():
+	if Globals.barn_guests.has("ostrich"):
+		queue_free()
+		return
 	if !Globals.has_completed_ostrich:
 		$InteractableCreature.symbol = symbols[0]
 	else:

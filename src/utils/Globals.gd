@@ -23,6 +23,13 @@ var has_completed_dodo = false
 
 var has_found_egg = false
 
+# 已经来到谷仓门前坐下的朋友，按到达顺序排列。
+var barn_guests = []
+
+# 弱引导：玩家碰壁的次数越多，揭晓得越明显。
+var sheep_misses = 0
+var chicken_beaten = 0
+
 var wind = Vector2.ZERO
 
 enum BusType {
@@ -46,6 +53,9 @@ func get_progress_level():
 	if has_completed_dodo:
 		progress += 1
 	return progress
+
+func has_completed(friend):
+	return get("has_completed_" + friend)
 
 func open_barn_if_needed():
 	if get_progress_level() == 6:

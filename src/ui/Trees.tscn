@@ -11,6 +11,7 @@ offset_bottom = 144.0
 color = Color(0.741176, 0.576471, 0.32549, 1)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=901961814]
+y_sort_enabled = true
 
 [node name="Wheat" parent="Node2D" unique_id=1333966617 instance=ExtResource("3")]
 position = Vector2(94, 22)

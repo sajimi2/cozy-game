@@ -25,7 +25,7 @@ script = ExtResource("1")
 show_behind_parent = true
 offset_right = 384.0
 offset_bottom = 144.0
-color = Color(0.741176, 0.576471, 0.32549, 1)
+color = Color(0.525490, 0.690196, 0.376471, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1854247513]
 position = Vector2(86, 71)
@@ -40,6 +40,7 @@ texture = ExtResource("5")
 centered = false
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1095083898]
+y_sort_enabled = true
 
 [node name="Player" parent="Node2D" unique_id=1683054423 instance=ExtResource("2")]
 position = Vector2(21, 68)

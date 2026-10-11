@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" path="res://src/stacked/Wheat.tscn" id="17"]
 [ext_resource type="PackedScene" path="res://src/stacked/Mushroom.tscn" id="18"]
 [ext_resource type="PackedScene" path="res://src/stacked/Stump.tscn" id="19"]
+[ext_resource type="Script" path="res://src/effects/FlowerScatter.gd" id="flower_scatter"]
 
 [sub_resource type="CircleShape2D" id="4"]
 
@@ -41,7 +42,7 @@ show_behind_parent = true
 offset_left = -192.0
 offset_right = 192.0
 offset_bottom = 144.0
-color = Color(0.741176, 0.576471, 0.32549, 1)
+color = Color(0.525490, 0.690196, 0.376471, 1)
 
 [node name="Lake" type="Sprite2D" parent="." unique_id=454787115]
 visible = false
@@ -74,7 +75,13 @@ shape = SubResource("4")
 position = Vector2(0, 72)
 texture = ExtResource("13")
 
+[node name="FlowerScatter" type="Node2D" parent="."]
+script = ExtResource("flower_scatter")
+area = Rect2(-192, 0, 384, 144)
+avoid = Array[NodePath]([NodePath("../Lake"), NodePath("../Dirt"), NodePath("../Path3D"), NodePath("../LandingArea/Sprite2D")])
+
 [node name="Node2D" type="Node2D" parent="." unique_id=890003612]
+y_sort_enabled = true
 
 [node name="Player" parent="Node2D" unique_id=17343760 instance=ExtResource("1")]
 position = Vector2(169, 75)
