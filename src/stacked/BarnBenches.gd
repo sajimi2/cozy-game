@@ -8,10 +8,8 @@ const HOP_HEIGHT = 3.0
 const HOP_SPEED = 10.0
 const WALK_SPEED = 38.0
 const STEP_TIME = 0.13
-# 每迈一步身体往那一侧倾斜，一摇一摆地走
-const SWAY_DEGREES = 7.0
-# 有走路帧的朋友迈步走（tools/gen_walk.py 生成）；青蛙没有，继续跳着走。
-const WALKERS = ["chicken", "sheep", "dodo", "ostrich"]
+# 有走路帧的朋友迈步走（tools/gen_walk.py 生成），其余的跳着走。
+const WALKERS = ["chicken", "sheep", "dodo", "ostrich", "frog"]
 const DOOR_FACING = Vector2(-0.5, 0.866)
 const RING_RADIUS = 62.0
 
@@ -142,10 +140,11 @@ func walk_to_seat(node, path, seat_index, friend):
 			if next_step != step:
 				step = next_step
 				sprite.swap_texture(walk_frames[step])
-			creature.sway = deg_to_rad(SWAY_DEGREES) * sin(walk_time * PI / (2.0 * STEP_TIME))
+				# 两腿并拢的那两帧身体略高 1 像素
+				sprite.lift = step % 2
 	if !walk_frames.is_empty():
 		sprite.swap_texture(creature.texture)
-		creature.sway = 0.0
+		sprite.lift = 0
 	# 跳上凳子
 	var start = node.global_position
 	var seat = seat_global(seat_index)
