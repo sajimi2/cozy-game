@@ -19,8 +19,6 @@ ANIMALS = {
     'dodo':    ('sprites/player/Dodo.png', 16, 3, 3, 'biped', False, False),
     'ostrich': ('sprites/stacked/Ostrich.png', 22, 6, 3, 'biped', False, False),
     'sheep':   ('sprites/stacked/Sheep.png', 12, 3, 2, 'quad', True, False),
-    # 青蛙只动脚掌和小腿（0~2 层），两侧折起的后腿不动
-    'frog':    ('sprites/stacked/Frog.png', 14, 2, 2, 'biped', False, False),
 }
 # 每帧 (A 腿脚的位移, B 腿脚的位移)，负数是往前。
 # 不抬脚：抬脚会让脚离开地面那一层，斜着看像腿断开了。迈步的起伏交给游戏里身体上下 1 像素。

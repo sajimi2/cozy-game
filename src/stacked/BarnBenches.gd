@@ -8,8 +8,8 @@ const HOP_HEIGHT = 3.0
 const HOP_SPEED = 10.0
 const WALK_SPEED = 38.0
 const STEP_TIME = 0.13
-# 有走路帧的朋友迈步走（tools/gen_walk.py 生成），其余的跳着走。
-const WALKERS = ["chicken", "sheep", "dodo", "ostrich", "frog"]
+# 有走路帧的朋友迈步走（tools/gen_walk.py 生成）；青蛙本来就该跳，继续跳着走。
+const WALKERS = ["chicken", "sheep", "dodo", "ostrich"]
 const DOOR_FACING = Vector2(-0.5, 0.866)
 const RING_RADIUS = 62.0
 
