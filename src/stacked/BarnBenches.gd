@@ -20,9 +20,11 @@ const VISITORS = {
 const ENTRANCES = {
 	"frog": [Vector2(-110, 140), Vector2(90, 141)],
 	"dodo": [Vector2(-110, 140), Vector2(90, 141)],
-	"scarecrow": [Vector2(90, -16), Vector2(96, 128)],
 	"ostrich": [Vector2(300, 150), Vector2(150, 152)],
 }
+# 稻草人走不了路，像玉米迷宫的传送点一样冒一团烟，直接出现在凳子上。
+const TELEPORTERS = ["scarecrow"]
+const Smoke = preload("res://src/minigames/drone/Smoke.tscn")
 # 本来就住在中央广场的朋友，直接从原地走过来。
 const RESIDENTS = {
 	"chicken": "Chicken",
@@ -67,12 +69,27 @@ func invite(friend, node = null, delay = 1.0):
 	Globals.barn_guests.push_back(friend)
 	var seat_index = Globals.barn_guests.size() - 1
 	await get_tree().create_timer(delay).timeout
+	if TELEPORTERS.has(friend):
+		teleport_to_seat(spawn_visitor(friend), seat_index)
+		return
 	var path = RESIDENT_PATHS.get(friend, [])
 	if node == null:
 		node = spawn_visitor(friend)
 		node.global_position = ENTRANCES[friend][0]
 		path = ENTRANCES[friend].slice(1)
 	walk_to_seat(node, path, seat_index)
+
+func teleport_to_seat(node, seat_index):
+	sit_down(node, seat_index, true)
+	var smoke = Smoke.instantiate()
+	get_parent().add_child(smoke)
+	smoke.global_position = seat_global(seat_index)
+	AudioManager.play_sfx("Teleport")
+
+# 坐下后面朝中间那条通往谷仓门的小路。
+func aisle_point(seat_index):
+	var door = $Door.global_position
+	return door + DOOR_FACING * (seat_global(seat_index) - door).dot(DOOR_FACING)
 
 # 从半圆正前方沿外圈绕到座位前，免得穿过别人的凳子。
 func ring_path(seat_index):
@@ -128,7 +145,7 @@ func sit_down(node, seat_index, instant = false):
 	sprite.lift = SEAT_HEIGHT
 	sprite.shadow_radius = 0
 	creature.bubble_offset = creature.bubble_offset + Vector2(0, -SEAT_HEIGHT)
-	creature.turn_towards($Door.global_position)
+	creature.turn_towards(aisle_point(seat_index))
 	if instant:
 		creature.current_rotation = creature.next_rotation
 	set_blocking(creature, true)
