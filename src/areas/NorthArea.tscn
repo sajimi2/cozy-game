@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" path="res://src/stacked/Log.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://src/stacked/Rock.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://src/stacked/Egg.tscn" id="17"]
+[ext_resource type="Script" path="res://src/effects/FlowerScatter.gd" id="flower_scatter"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(209, 20)
@@ -181,7 +182,7 @@ offset_left = -11.0
 offset_top = -13.0
 offset_right = 203.0
 offset_bottom = 288.0
-color = Color(0.741176, 0.576471, 0.32549, 1)
+color = Color(0.525490, 0.690196, 0.376471, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1221801019]
 position = Vector2(86, 228)
@@ -212,6 +213,11 @@ texture = ExtResource("8")
 centered = false
 
 [node name="Lightnings" type="Node2D" parent="." unique_id=1890118707]
+
+[node name="FlowerScatter" type="Node2D" parent="."]
+script = ExtResource("flower_scatter")
+area = Rect2(-11, -13, 214, 301)
+avoid = Array[NodePath]([NodePath("../Dirt"), NodePath("../Path3D")])
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1895915464]
 y_sort_enabled = true

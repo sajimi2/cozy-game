@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" path="res://src/stacked/Rock.tscn" id="20"]
 [ext_resource type="PackedScene" path="res://src/stacked/Log.tscn" id="21"]
 [ext_resource type="PackedScene" path="res://src/stacked/BarnBenches.tscn" id="barn_benches"]
+[ext_resource type="Script" path="res://src/effects/FlowerScatter.gd" id="flower_scatter"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(209, 20)
@@ -39,7 +40,7 @@ script = ExtResource("10")
 offset_left = -96.0
 offset_right = 288.0
 offset_bottom = 288.0
-color = Color(0.741176, 0.576471, 0.32549, 1)
+color = Color(0.525490, 0.690196, 0.376471, 1)
 
 [node name="Dirt" type="Sprite2D" parent="." unique_id=1549799729]
 position = Vector2(-96, 0)
@@ -73,6 +74,11 @@ position = Vector2(0, -5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToNorthArea" unique_id=1081652340]
 position = Vector2(93, 0)
 shape = SubResource("3")
+
+[node name="FlowerScatter" type="Node2D" parent="."]
+script = ExtResource("flower_scatter")
+area = Rect2(-96, 0, 384, 288)
+avoid = Array[NodePath]([NodePath("../Dirt")])
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1155965393]
 y_sort_enabled = true
