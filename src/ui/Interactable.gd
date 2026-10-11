@@ -88,9 +88,14 @@ func _on_Area2D_body_exited(body):
 		queue_redraw()
 
 # 换一张气泡底图（四帧横排），用于装下比 8x8 更大的符号；传 null 换回原来的气泡。
+# symbol_frames 是符号的帧数，可以是气泡帧数的整数倍，符号会跟着气泡一圈圈往后播。
 var default_bubble_frames = null
+var bubble_loops = 0
 
-func set_bubble_texture(texture):
+func set_bubble_texture(texture, symbol_frames = 4):
+	$Bubble/Symbol.hframes = symbol_frames
+	$Bubble/Symbol.frame = 0
+	bubble_loops = 0
 	if default_bubble_frames == null:
 		default_bubble_frames = $Bubble.sprite_frames
 	if texture == null:
@@ -107,8 +112,11 @@ func set_bubble_texture(texture):
 		frames.add_frame("default", region)
 	$Bubble.sprite_frames = frames
 	$Bubble.play("default")
-	# 加宽气泡的尾巴占了下面几行，符号略微上移才在气泡里居中。
-	$Bubble/Symbol.position.y = -1
+	# 加大气泡的尾巴占了下面几行，符号略微上移才在气泡里居中。
+	$Bubble/Symbol.position.y = -2
 
 func _on_Bubble_frame_changed():
-	$Bubble/Symbol.frame = $Bubble.frame
+	if $Bubble.frame == 0:
+		bubble_loops += 1
+	var bubble_frames = $Bubble.sprite_frames.get_frame_count("default")
+	$Bubble/Symbol.frame = ($Bubble.frame + bubble_loops * bubble_frames) % $Bubble/Symbol.hframes
