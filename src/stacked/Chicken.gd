@@ -1,6 +1,9 @@
 extends Node2D
 
 const RockPaperScissors = preload("res://src/minigames/RockPaperScissors.tscn")
+# 背过身后，头上的气泡换成猜拳计分格里“小鸡赢了”的头像：它想赢一次
+const WishBubble = preload("res://sprites/ui/ChatBubbleLarge.png")
+const WishSymbol = preload("res://sprites/ui/symbols/ChickenWish.png")
 
 @export var symbols = [] # (Array, Texture2D)
 
@@ -69,7 +72,17 @@ func start_sulking():
 	$InteractableCreature.turn_towards_player = false
 	var away = global_position + (global_position - player_ref.global_position)
 	$InteractableCreature.slow_turn_towards(away)
+	# 先让难过的脸停一会儿，再换成愿望气泡
+	await get_tree().create_timer(1.2).timeout
+	if !is_sulking:
+		return
+	$InteractableCreature.symbol = WishSymbol
+	$InteractableCreature/Interactable.set_bubble_texture(WishBubble, 4, -1)
+	AudioManager.play_sfx("QuestionMarkAppears")
 
 func stop_sulking():
 	is_sulking = false
 	$InteractableCreature.turn_towards_player = true
+	if $InteractableCreature.symbol == WishSymbol:
+		$InteractableCreature/Interactable.set_bubble_texture(null)
+		$InteractableCreature.symbol = symbols[0]

@@ -92,7 +92,7 @@ func _on_Area2D_body_exited(body):
 var default_bubble_frames = null
 var bubble_loops = 0
 
-func set_bubble_texture(texture, symbol_frames = 4):
+func set_bubble_texture(texture, symbol_frames = 4, symbol_offset_y = -2):
 	$Bubble/Symbol.hframes = symbol_frames
 	$Bubble/Symbol.frame = 0
 	bubble_loops = 0
@@ -101,6 +101,7 @@ func set_bubble_texture(texture, symbol_frames = 4):
 	if texture == null:
 		$Bubble.sprite_frames = default_bubble_frames
 		$Bubble/Symbol.position.y = 0
+		$Bubble.position = bubble_offset
 		return
 	var frames = SpriteFrames.new()
 	frames.set_animation_speed("default", default_bubble_frames.get_animation_speed("default"))
@@ -112,8 +113,10 @@ func set_bubble_texture(texture, symbol_frames = 4):
 		frames.add_frame("default", region)
 	$Bubble.sprite_frames = frames
 	$Bubble.play("default")
+	# 气泡变高后往上抬，底部尾巴仍停在原来的位置，不压住角色的头
+	$Bubble.position = bubble_offset - Vector2(0, (texture.get_height() - 16) / 2.0)
 	# 加大气泡的尾巴占了下面几行，符号略微上移才在气泡里居中。
-	$Bubble/Symbol.position.y = -2
+	$Bubble/Symbol.position.y = symbol_offset_y
 
 func _on_Bubble_frame_changed():
 	if $Bubble.frame == 0:
