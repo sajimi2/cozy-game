@@ -7,6 +7,9 @@ const SEAT_HEIGHT = 9
 const HOP_HEIGHT = 3.0
 const HOP_SPEED = 10.0
 const WALK_SPEED = 38.0
+const STEP_TIME = 0.13
+# 有走路帧的朋友迈步走（tools/gen_walk.py 生成）；青蛙没有，继续跳着走。
+const WALKERS = ["chicken", "sheep", "dodo", "ostrich"]
 const DOOR_FACING = Vector2(-0.5, 0.866)
 const RING_RADIUS = 62.0
 
@@ -77,7 +80,7 @@ func invite(friend, node = null, delay = 1.0):
 		node = spawn_visitor(friend)
 		node.global_position = ENTRANCES[friend][0]
 		path = ENTRANCES[friend].slice(1)
-	walk_to_seat(node, path, seat_index)
+	walk_to_seat(node, path, seat_index, friend)
 
 func teleport_to_seat(node, seat_index):
 	sit_down(node, seat_index, true)
@@ -105,12 +108,25 @@ func ring_path(seat_index):
 func seat_global(seat_index):
 	return seats[seat_index].global_position
 
-func walk_to_seat(node, path, seat_index):
+func load_walk_frames(friend):
+	var frames = []
+	if WALKERS.has(friend):
+		for i in 4:
+			frames.push_back(load("res://sprites/stacked/walk/%s_walk_%d.png" % [friend, i]))
+	return frames
+
+func show_frame(sprite, texture):
+	sprite.texture = texture
+	sprite.render_sprites()
+
+func walk_to_seat(node, path, seat_index, friend):
 	var creature = node.get_node("InteractableCreature")
 	var sprite = creature.get_node("StackedSprite")
+	var walk_frames = load_walk_frames(friend)
 	set_blocking(creature, false)
 	var points = path + ring_path(seat_index)
-	var hop_time = 0.0
+	var walk_time = 0.0
+	var step = -1
 	for target in points:
 		creature.turn_towards(target)
 		while node.global_position.distance_to(target) > 0.5:
@@ -118,9 +134,20 @@ func walk_to_seat(node, path, seat_index):
 			if !is_instance_valid(node) or !node.is_inside_tree():
 				return
 			var delta = get_process_delta_time()
-			hop_time += delta
+			walk_time += delta
 			node.global_position = node.global_position.move_toward(target, WALK_SPEED * delta)
-			sprite.lift = int(round(abs(sin(hop_time * HOP_SPEED)) * HOP_HEIGHT))
+			if walk_frames.is_empty():
+				sprite.lift = int(round(abs(sin(walk_time * HOP_SPEED)) * HOP_HEIGHT))
+				continue
+			# 两腿并拢的那两帧身体略高 1 像素
+			var next_step = int(walk_time / STEP_TIME) % 4
+			if next_step != step:
+				step = next_step
+				show_frame(sprite, walk_frames[step])
+				sprite.lift = step % 2
+	if !walk_frames.is_empty():
+		show_frame(sprite, creature.texture)
+		sprite.lift = 0
 	# 跳上凳子
 	var start = node.global_position
 	var seat = seat_global(seat_index)
