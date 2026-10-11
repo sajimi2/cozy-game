@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://icmobqy7ky1a"
-path="res://.godot/imported/Mushroom_2.png-f8a948e5df7799b3265d39730c475f91.ctex"
+uid="uid://i3md3cf7tnng"
+path="res://.godot/imported/Flower_1.png-37551b788e164e1696358661c37cb27e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/stacked/Mushroom_2.png"
-dest_files=["res://.godot/imported/Mushroom_2.png-f8a948e5df7799b3265d39730c475f91.ctex"]
+source_file="res://sprites/stacked/Flower_1.png"
+dest_files=["res://.godot/imported/Flower_1.png-37551b788e164e1696358661c37cb27e.ctex"]
 
 [params]
 
