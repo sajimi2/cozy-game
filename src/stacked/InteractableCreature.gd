@@ -23,6 +23,8 @@ signal interacted(body)
 var current_rotation = 0.0
 var next_rotation = 0.0
 var rotation_speed = 5.0
+# 走路时左右摇摆的额外角度（弧度）
+var sway = 0.0
 
 func _ready():
 	$StackedSprite.rotate_sprites(deg_to_rad(starting_rotation))
@@ -31,7 +33,7 @@ func _ready():
 
 func _process(delta):
 	current_rotation = lerp(current_rotation, next_rotation, delta * rotation_speed)
-	$StackedSprite.rotate_sprites(current_rotation)
+	$StackedSprite.rotate_sprites(current_rotation + sway)
 
 func turn_towards(global_pos):
 	next_rotation = global_position.angle_to_point(global_pos) + deg_to_rad(90)

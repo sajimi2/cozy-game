@@ -57,6 +57,12 @@ func clear_sprites():
 		if !"Shadow" in child.name:
 			child.queue_free()
 
+# 只换每一层的图片，不重建节点：逐帧切换动画时不会出现新旧两套叠片同时显示的一帧。
+func swap_texture(_texture):
+	for sprite in get_children():
+		if sprite is Sprite2D and !"Shadow" in sprite.name:
+			sprite.texture = _texture
+
 func render_sprites():
 	clear_sprites()
 	for i in range(0, hframes):

@@ -8,6 +8,8 @@ const HOP_HEIGHT = 3.0
 const HOP_SPEED = 10.0
 const WALK_SPEED = 38.0
 const STEP_TIME = 0.13
+# 每迈一步身体往那一侧倾斜，一摇一摆地走
+const SWAY_DEGREES = 7.0
 # 有走路帧的朋友迈步走（tools/gen_walk.py 生成）；青蛙没有，继续跳着走。
 const WALKERS = ["chicken", "sheep", "dodo", "ostrich"]
 const DOOR_FACING = Vector2(-0.5, 0.866)
@@ -115,9 +117,6 @@ func load_walk_frames(friend):
 			frames.push_back(load("res://sprites/stacked/walk/%s_walk_%d.png" % [friend, i]))
 	return frames
 
-func show_frame(sprite, texture):
-	sprite.texture = texture
-	sprite.render_sprites()
 
 func walk_to_seat(node, path, seat_index, friend):
 	var creature = node.get_node("InteractableCreature")
@@ -139,15 +138,14 @@ func walk_to_seat(node, path, seat_index, friend):
 			if walk_frames.is_empty():
 				sprite.lift = int(round(abs(sin(walk_time * HOP_SPEED)) * HOP_HEIGHT))
 				continue
-			# 两腿并拢的那两帧身体略高 1 像素
 			var next_step = int(walk_time / STEP_TIME) % 4
 			if next_step != step:
 				step = next_step
-				show_frame(sprite, walk_frames[step])
-				sprite.lift = step % 2
+				sprite.swap_texture(walk_frames[step])
+			creature.sway = deg_to_rad(SWAY_DEGREES) * sin(walk_time * PI / (2.0 * STEP_TIME))
 	if !walk_frames.is_empty():
-		show_frame(sprite, creature.texture)
-		sprite.lift = 0
+		sprite.swap_texture(creature.texture)
+		creature.sway = 0.0
 	# 跳上凳子
 	var start = node.global_position
 	var seat = seat_global(seat_index)
