@@ -1,15 +1,15 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cww4putfjd1i2"]
 
 [ext_resource type="PackedScene" path="res://src/stacked/InteractableCreature.tscn" id="1"]
-[ext_resource type="Texture2D" path="res://sprites/stacked/Sign.png" id="2"]
-[ext_resource type="Script" path="res://src/stacked/InteractableSign.gd" id="3"]
-[ext_resource type="Texture2D" path="res://sprites/ui/symbols/KeyPress.png" id="4"]
-[ext_resource type="Texture2D" path="res://sprites/ui/ChatBubbleWide.png" id="6"]
-[ext_resource type="Texture2D" path="res://sprites/ui/symbols/Heart.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cd74kk0013nqv" path="res://sprites/stacked/Sign.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c047uokp1ndpw" path="res://sprites/ui/symbols/KeyPressSpring_v2.png" id="2_mgcxt"]
+[ext_resource type="Script" uid="uid://b25hi1kem3tmg" path="res://src/stacked/InteractableSign.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://bmoiq2g0k3hgr" path="res://sprites/ui/symbols/Heart.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://b5ss50a05ctsq" path="res://sprites/ui/ChatBubbleWide.png" id="6"]
 
 [node name="InteractableSign" type="Node2D" unique_id=1377880112]
 script = ExtResource("3")
-symbols = [ExtResource("4"), ExtResource("5")]
+symbols = Array[Texture2D]([ExtResource("2_mgcxt"), ExtResource("5")])
 wide_bubble = ExtResource("6")
 
 [node name="InteractableCreature" parent="." unique_id=1537126328 instance=ExtResource("1")]

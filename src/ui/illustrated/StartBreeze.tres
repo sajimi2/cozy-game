@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bv51caj1q4msi"]
+
+[ext_resource type="Shader" uid="uid://do7q4ry15g0m3" path="res://src/ui/illustrated/StartBreeze.gdshader" id="1_qxx2a"]
+
+[resource]
+shader = ExtResource("1_qxx2a")
+shader_parameter/title_sway = 1.0
+shader_parameter/petals_enabled = true
+shader_parameter/preview_time = -1.0

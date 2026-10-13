@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://di10w55dtkbox"]
 
 [ext_resource type="PackedScene" path="res://src/stacked/HayStack.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://src/stacked/HayHome.tscn" id="2"]
@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" path="res://src/stacked/BarnScarecrow.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://src/stacked/BarnSheep.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="6"]
-[ext_resource type="Texture2D" path="res://sprites/stacked/houses/InsideBarn.png" id="7"]
-[ext_resource type="Texture2D" path="res://sprites/stacked/houses/BarnBottomSingleLayer.png" id="8"]
-[ext_resource type="Texture2D" path="res://sprites/stacked/houses/BarnTop.png" id="9"]
-[ext_resource type="Texture2D" path="res://sprites/stacked/houses/BarnSides.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://ddbm87j0jnhh" path="res://sprites/stacked/houses/InsideBarn.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://cw387dnm2qimw" path="res://sprites/stacked/houses/BarnBottomSingleLayer.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://pfkxouelcxpi" path="res://sprites/stacked/houses/BarnTop.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://b6y8kulhsx13o" path="res://sprites/stacked/houses/BarnSides.png" id="10"]
 [ext_resource type="PackedScene" path="res://src/stacked/Pillar.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://src/stacked/BarnChicken.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://src/stacked/Stool.tscn" id="13"]
@@ -23,9 +23,10 @@
 [ext_resource type="PackedScene" path="res://src/stacked/CornStalk.tscn" id="21"]
 [ext_resource type="PackedScene" path="res://src/stacked/Mushroom.tscn" id="22"]
 [ext_resource type="PackedScene" path="res://src/stacked/Podium.tscn" id="23"]
-[ext_resource type="Texture2D" path="res://sprites/minigames/Credits.png" id="24"]
-[ext_resource type="Texture2D" path="res://sprites/minigames/Paper.png" id="25"]
-[ext_resource type="Script" path="res://src/areas/BarnArea.gd" id="26"]
+[ext_resource type="Texture2D" uid="uid://24pc2xbjas1y" path="res://sprites/minigames/Credits.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://ccdmklyas4qt5" path="res://sprites/minigames/Paper.png" id="25"]
+[ext_resource type="Script" uid="uid://ciyfdrfuj83ca" path="res://src/areas/BarnArea.gd" id="26"]
+[ext_resource type="PackedScene" uid="uid://dmtmdcwqiwsns" path="res://src/ui/illustrated/EndingGallery.tscn" id="27_disab"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(20, 169)
@@ -369,3 +370,5 @@ centered = false
 visible = false
 texture = ExtResource("24")
 centered = false
+
+[node name="EndingGallery" parent="." unique_id=1085458469 instance=ExtResource("27_disab")]

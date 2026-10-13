@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dmtmdcwqiwsns"]
+
+[ext_resource type="Script" uid="uid://bmtigt1cq420k" path="res://src/ui/illustrated/EndingGallery.gd" id="1_suicj"]
+[ext_resource type="Theme" uid="uid://ln8hwtmpiby1" path="res://src/ui/illustrated/PaperTheme.tres" id="2_2dqip"]
+[ext_resource type="Texture2D" uid="uid://dxbebbjxs2du2" path="res://art/ui/ending_gathering.png" id="3_2dqip"]
+
+[node name="EndingGallery" type="CanvasLayer" unique_id=1085458469]
+process_mode = 3
+layer = 50
+script = ExtResource("1_suicj")
+
+[node name="Root" type="Control" parent="." unique_id=1408546108]
+visible = false
+texture_filter = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("2_2dqip")
+
+[node name="Paper" type="ColorRect" parent="Root" unique_id=1521286717]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 0.9607843, 0.8745098, 1)
+
+[node name="Image" type="TextureRect" parent="Root" unique_id=1023549391]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 10.0
+offset_right = 750.0
+offset_bottom = 470.0
+mouse_filter = 2
+texture = ExtResource("3_2dqip")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Root" unique_id=786127078]
+layout_mode = 0
+offset_top = 480.0
+offset_right = 768.0
+offset_bottom = 508.0
+theme_override_font_sizes/font_size = 20
+text = "大家都在这里。"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="Root" unique_id=620264266]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 515.0
+offset_right = 483.0
+offset_bottom = 563.0
+rotation = -0.01
+text = "收好这张画"
+
+[node name="CreditsButton" type="Button" parent="Root" unique_id=1372909867]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 523.0
+offset_right = 745.0
+offset_bottom = 563.0
+theme_override_font_sizes/font_size = 20
+text = "原作致谢"
+
+[connection signal="pressed" from="Root/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Root/CreditsButton" to="." method="_on_credits_pressed"]

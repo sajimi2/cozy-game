@@ -1,16 +1,22 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bxd0ean2adgpy"]
 
 [ext_resource type="PackedScene" path="res://src/stacked/StackedSprite.tscn" id="1"]
-[ext_resource type="Texture2D" path="res://sprites/stacked/Well.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://chybs05yxk7nw" path="res://sprites/stacked/WellSpring_v2.png" id="2_w2u37"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 14.0
 
 [node name="Well" type="Node2D" unique_id=1073988187]
 
+[node name="GroundShadow" type="Polygon2D" parent="." unique_id=185594609]
+position = Vector2(1, 9)
+color = Color(0.054902, 0.0901961, 0.290196, 0.2)
+polygon = PackedVector2Array(-7, -7, 7, -7, 7, -6, 11, -6, 11, -5, 13, -5, 13, -3, 15, -3, 15, -1, 16, -1, 16, 2, 15, 2, 15, 4, 12, 4, 12, 5, 9, 5, 9, 6, 5, 6, 5, 7, -5, 7, -5, 6, -9, 6, -9, 5, -12, 5, -12, 4, -15, 4, -15, 2, -16, 2, -16, -1, -15, -1, -15, -3, -13, -3, -13, -5, -11, -5, -11, -6, -7, -6)
+
 [node name="StackedSprite" parent="." unique_id=954379936 instance=ExtResource("1")]
-texture = ExtResource("2")
-hframes = 12
+position = Vector2(0, -6)
+texture = ExtResource("2_w2u37")
+hframes = 1
 shadow_radius = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=990835703]

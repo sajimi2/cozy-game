@@ -15,5 +15,9 @@ func _on_InteractableCreature_interacted(body):
 	$InteractableCreature.symbol = symbols[1] 
 
 func _on_InteractableCreature_exited():
+	rearm_page()
+
+# 收图或离开书架后可再次翻看；关闭键已经由画页等待松开。
+func rearm_page():
 	$InteractableCreature.symbol = symbols[0]
 	showed_credits = false

@@ -1,0 +1,43 @@
+{
+  "generation": "built-in image_gen",
+  "well": {
+    "file": "sprites/stacked/WellSpring_v2.png",
+    "canvas": [
+      32,
+      44
+    ],
+    "display_offset": [
+      0,
+      -6
+    ],
+    "hframes": 1,
+    "anchor": [
+      16,
+      28
+    ],
+    "palette": 7
+  },
+  "keys": {
+    "file": "sprites/ui/symbols/KeyPressSpring_v2.png",
+    "canvas": [
+      144,
+      12
+    ],
+    "frame_size": [
+      18,
+      12
+    ],
+    "frame_count": 8,
+    "sequence": [
+      "Z up",
+      "Z down",
+      "Z hold",
+      "Z up",
+      "Space up",
+      "Space down",
+      "Space hold",
+      "Space up"
+    ],
+    "palette": 5
+  }
+}

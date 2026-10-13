@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://brtco8ys5t18p"]
+
+[ext_resource type="Theme" uid="uid://ln8hwtmpiby1" path="res://src/ui/illustrated/PaperTheme.tres" id="1_gxysh"]
+[ext_resource type="Script" uid="uid://mxeaeymnvei" path="res://src/ui/illustrated/StartPage.gd" id="2_8sdn0"]
+[ext_resource type="Material" uid="uid://bv51caj1q4msi" path="res://src/ui/illustrated/StartBreeze.tres" id="3_8sdn0"]
+[ext_resource type="Texture2D" uid="uid://b4p2lboe0y7ig" path="res://art/ui/title_cover.png" id="3_wv8lb"]
+
+[node name="StartPage" type="Control" unique_id=1117366734]
+texture_filter = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gxysh")
+script = ExtResource("2_8sdn0")
+
+[node name="Cover" type="TextureRect" parent="." unique_id=1289005277]
+material = ExtResource("3_8sdn0")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("3_wv8lb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Start" type="Button" parent="." unique_id=1959073082]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 212.0
+offset_right = 262.0
+offset_bottom = 270.0
+rotation = -0.02
+text = "开始游玩"
+
+[node name="Sound" type="Button" parent="." unique_id=1030390509]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 531.0
+offset_right = 745.0
+offset_bottom = 567.0
+theme_override_font_sizes/font_size = 18
+text = "声音：开"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Sound" to="." method="_on_sound_pressed"]
