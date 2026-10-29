@@ -4,6 +4,7 @@ render_mode unshaded;
 uniform float title_sway : hint_range(0.0, 2.0, 0.05) = 1.0;
 uniform bool petals_enabled = true;
 uniform float vegetation_sway : hint_range(0.0, 2.0, 0.05) = 1.0;
+uniform float canopy_sway : hint_range(0.0, 2.0, 0.05) = 1.0;
 // -1 为正常播放；非负值供编辑器定格查看。
 uniform float preview_time = -1.0;
 
@@ -13,11 +14,54 @@ float seeded(float value) {
 
 // 花草根部保持不动，越靠近顶端越容易随风摆；边界柔和回到原画面。
 float plant_tip(vec2 uv, vec4 bounds) {
-    float across = smoothstep(bounds.x, bounds.x + 0.014, uv.x)
-        * (1.0 - smoothstep(bounds.z - 0.014, bounds.z, uv.x));
-    float within = smoothstep(bounds.y, bounds.y + 0.014, uv.y)
-        * (1.0 - smoothstep(bounds.w - 0.014, bounds.w, uv.y));
-    return across * within * (1.0 - smoothstep(bounds.y, bounds.w, uv.y));
+    vec2 local = (uv - bounds.xy) / (bounds.zw - bounds.xy);
+    float across = smoothstep(0.0, 0.16, local.x)
+        * (1.0 - smoothstep(0.84, 1.0, local.x));
+    float within = smoothstep(0.0, 0.12, local.y)
+        * (1.0 - smoothstep(0.94, 1.0, local.y));
+    return across * within * pow(1.0 - clamp(local.y, 0.0, 1.0), 1.5);
+}
+
+// 缓慢的风力起伏叠加少量余摆；各丛稍微错开，避免整排花草同步摇动。
+float gentle_wind(float seconds, float phase) {
+    float strength = 0.67 + sin(seconds * 0.27 + 0.6) * 0.16
+        + sin(seconds * 0.41 + 2.1) * 0.10;
+    return strength * (sin(seconds * 0.74 + phase) * 0.78
+        + sin(seconds * 1.17 + phase * 1.3) * 0.17
+        + sin(seconds * 0.43 + phase * 0.7) * 0.05);
+}
+
+vec2 plant_motion(vec2 uv, vec4 bounds, float seconds, float phase, float pixels) {
+    float weight = plant_tip(uv, bounds);
+    float wind = gentle_wind(seconds, phase);
+    // 横向弯曲为主，只有极小的花头起伏；根部位移逐渐归零。
+    return vec2(wind * pixels, wind * wind * pixels * 0.08) * weight;
+}
+
+float blossom_ink(vec3 color) {
+    float pink = smoothstep(0.03, 0.10, color.r - color.g)
+        * smoothstep(-0.005, 0.055, color.b - color.g);
+    float cream = smoothstep(0.76, 0.89, min(color.r, color.g))
+        * smoothstep(0.02, 0.08, color.r - color.b);
+    return max(pink, cream);
+}
+
+float canopy_lobe(vec2 uv, vec2 center, vec2 radius) {
+    return 1.0 - smoothstep(0.42, 1.0, length((uv - center) / radius));
+}
+
+// 三簇花叶略有先后，横向摆动为主；合并权重防止交叠处摆幅加倍。
+vec2 canopy_motion(vec2 uv, float seconds) {
+    float left = canopy_lobe(uv, vec2(0.585, 0.018), vec2(0.115, 0.128));
+    float middle = canopy_lobe(uv, vec2(0.730, 0.100), vec2(0.128, 0.151));
+    float right = canopy_lobe(uv, vec2(0.895, 0.153), vec2(0.111, 0.144));
+    float wind_left = gentle_wind(seconds, 0.42);
+    float wind_middle = gentle_wind(seconds, 0.86);
+    float wind_right = gentle_wind(seconds, 1.31);
+    vec2 motion = vec2(wind_left * 3.8, wind_left * 0.9) * left;
+    motion += vec2(wind_middle * 3.5, wind_middle * 1.0) * middle;
+    motion += vec2(wind_right * 4.0, wind_right * 1.1) * right;
+    return motion / max(1.0, left + middle + right);
 }
 
 // 四片原花瓣的带边距取样区域；顺序为上方、右侧、中间、下方。
@@ -53,18 +97,33 @@ void fragment() {
     rotated.y += sin(seconds * 1.05 + UV.x * 6.0) * 0.0030 * title_sway;
     vec2 cover_uv = mix(UV, rotated, title_area);
 
-    // 动作留在前景草尖和三处花朵周围，不拉动上方动物。前景底边同样固定。
-    float front_grass = smoothstep(0.845, 0.900, UV.y)
-        * (1.0 - smoothstep(0.975, 1.0, UV.y));
+    // 分开处理前景草丛，柔和地收回边缘；浅色地面和小路尽量保持稳定。
+    vec2 grass_motion = plant_motion(UV, vec4(0.015, 0.855, 0.185, 1.0), seconds, 0.15, 3.8);
+    grass_motion += plant_motion(UV, vec4(0.175, 0.865, 0.340, 1.0), seconds, 0.52, 4.1);
+    grass_motion += plant_motion(UV, vec4(0.330, 0.895, 0.525, 1.0), seconds, 0.84, 3.4);
+    grass_motion += plant_motion(UV, vec4(0.500, 0.860, 0.700, 1.0), seconds, 1.12, 4.0);
+    grass_motion += plant_motion(UV, vec4(0.680, 0.865, 0.860, 1.0), seconds, 1.38, 3.5);
+    grass_motion += plant_motion(UV, vec4(0.850, 0.860, 1.0, 1.0), seconds, 1.67, 3.7);
     vec3 ground_color = texture(TEXTURE, UV).rgb;
-    front_grass *= smoothstep(-0.015, 0.045, ground_color.g - ground_color.r);
-    float flower_left = plant_tip(UV, vec4(0.020, 0.835, 0.122, 0.965));
-    float flower_middle = plant_tip(UV, vec4(0.340, 0.715, 0.405, 0.848));
-    float flower_right = plant_tip(UV, vec4(0.930, 0.710, 0.998, 0.850));
-    float plant_area = max(front_grass * 0.72, max(flower_left, max(flower_middle, flower_right)));
-    float breeze = sin(seconds * 0.88 + UV.x * 4.0) * 0.78
-        + sin(seconds * 1.31 + UV.x * 6.0) * 0.22;
-    cover_uv.x += breeze * plant_area * vegetation_sway * (2.2 / 768.0);
+    float grass_ink = smoothstep(0.015, 0.075, ground_color.g - ground_color.r)
+        * (1.0 - smoothstep(0.68, 0.84, ground_color.g));
+    vec2 motion = grass_motion * grass_ink;
+    motion += plant_motion(UV, vec4(0.020, 0.835, 0.122, 0.965), seconds, 0.30, 3.8);
+    motion += plant_motion(UV, vec4(0.340, 0.715, 0.405, 0.848), seconds, 0.93, 3.6);
+    motion += plant_motion(UV, vec4(0.930, 0.710, 0.998, 0.850), seconds, 1.76, 3.4);
+    cover_uv += motion * vegetation_sway * 1.6 / vec2(768.0, 576.0);
+
+    // 略扩花叶取样边缘，让轮廓一起摆动；棕色枝干从位移中排除。
+    vec2 leaf_margin = vec2(3.0 / 768.0, 2.0 / 576.0);
+    float blossoms = blossom_ink(ground_color);
+    blossoms = max(blossoms, blossom_ink(texture(TEXTURE, UV + vec2(leaf_margin.x, 0.0)).rgb));
+    blossoms = max(blossoms, blossom_ink(texture(TEXTURE, UV - vec2(leaf_margin.x, 0.0)).rgb));
+    blossoms = max(blossoms, blossom_ink(texture(TEXTURE, UV + vec2(0.0, leaf_margin.y)).rgb));
+    blossoms = max(blossoms, blossom_ink(texture(TEXTURE, UV - vec2(0.0, leaf_margin.y)).rgb));
+    float branch_lock = smoothstep(0.025, 0.070, ground_color.g - ground_color.b)
+        * (1.0 - smoothstep(0.68, 0.78, ground_color.g));
+    cover_uv += canopy_motion(UV, seconds) * blossoms * (1.0 - branch_lock)
+        * canopy_sway / vec2(768.0, 576.0);
     vec4 painted = texture(TEXTURE, cover_uv);
 
     if (petals_enabled) {

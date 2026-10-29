@@ -16,9 +16,7 @@ config/features=PackedStringArray("4.7")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/use_filter=false
 boot_splash/image="res://sprites/etc/Loading.png"
-config/icon="res://sprites/etc/BirdSymbol.png"
-config/macos_native_icon="res://sprites/etc/BirdSymbol.icns"
-config/windows_native_icon="res://sprites/etc/BirdSymbol.ico"
+config/icon="res://icon.png"
 
 [autoload]
 

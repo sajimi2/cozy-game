@@ -1,10 +1,10 @@
 extends CanvasLayer
 
 const ENDING := preload("res://art/ui/ending_gathering.png")
-const ORIGINAL_CREDITS := preload("res://sprites/minigames/Credits.png")
+const CREDITS := preload("res://art/ui/ending_credits_crayon.png")
 var _opened_at := 0
 var _was_paused := false
-var _showing_original := false
+var _showing_credits := false
 var _closing := false
 
 func _ready() -> void:
@@ -19,7 +19,7 @@ func open() -> void:
 	_was_paused = get_tree().paused
 	_opened_at = Time.get_ticks_msec()
 	_closing = false
-	_showing_original = false
+	_showing_credits = false
 	_show_ending()
 	IllustratedDisplay.use_illustration(get_window())
 	$Root.show()
@@ -30,16 +30,16 @@ func open() -> void:
 func _show_ending() -> void:
 	$Root/Image.texture = ENDING
 	$Root/Image.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	$Root/CreditsButton.text = "原作致谢"
-	$Root/Caption.text = "大家都在这里。"
+	$Root/CreditsButton.text = "制作致谢"
+	$Root/Caption.text = "大家都在这里~"
 
 func _on_credits_pressed() -> void:
-	_showing_original = not _showing_original
-	if _showing_original:
-		$Root/Image.texture = ORIGINAL_CREDITS
-		$Root/Image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_showing_credits = not _showing_credits
+	if _showing_credits:
+		$Root/Image.texture = CREDITS
+		$Root/Image.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 		$Root/CreditsButton.text = "回到合照"
-		$Root/Caption.text = "原作：Jon Topielski 与 Mellorine"
+		$Root/Caption.text = "制作致谢"
 	else:
 		_show_ending()
 
